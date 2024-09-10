@@ -7,7 +7,7 @@ import { AlertTriangle, CheckCircle, Loader, Star } from "react-feather";
 
 export default function Home() {
   const [buttonState, setButtonState] = useState("default");
-  let [isGreen, setIsGreen] = useState(false);
+  const [isGreen, setIsGreen] = useState(false);
 
   const content = useMemo(() => {
     switch (buttonState) {
