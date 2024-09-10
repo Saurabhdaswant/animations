@@ -12,7 +12,7 @@ export default function Home() {
         <div className="mt-10 w-full">
           {[...Array(4)].map((_, idx) => {
             return (
-              <div className="mt-10 space-y-4">
+              <div key={idx} className="mt-10 space-y-4">
                 <p className="font-[family-name:var(--font-geist-mono)]">
                   {" "}
                   {idx}. Family Happy Button Animation
