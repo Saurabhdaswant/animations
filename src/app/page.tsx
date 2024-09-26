@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertTriangle, CheckCircle, Loader, Star } from "react-feather";
+import { AlertCircle, CheckCircle, Loader, Star } from "react-feather";
 
 export default function Home() {
   const [buttonState, setButtonState] = useState("default");
@@ -33,8 +33,7 @@ export default function Home() {
                 duration: 0.9,
               }}
             >
-              <Star width={80} height={80} />
-              {/* <SparklesIcon className=" " width={80} height={80} />{" "} */}
+              <Star width={80} height={80} strokeWidth={2.5} />
             </motion.div>
             <motion.span
               initial={{ opacity: 0, x: 150 }}
@@ -45,6 +44,7 @@ export default function Home() {
                 bounce: 0.4,
                 duration: 0.9,
               }}
+              className=" "
             >
               Transaction
             </motion.span>
@@ -126,8 +126,7 @@ export default function Home() {
                 duration: 0.9,
               }}
             >
-              <CheckCircle width={70} height={70} />
-              {/* <CheckCircleIcon width={80} height={80} />{" "} */}
+              <CheckCircle width={70} height={70} strokeWidth={2.5} />
             </motion.div>
             <motion.span
               initial={{ opacity: 0, x: 150, filter: "blur(2px)" }}
@@ -160,7 +159,14 @@ export default function Home() {
             {" "}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                x: [0, 20, -15, 12.5, -10, 10, -7.5, 7.5, -5, 5, 0],
+                transition: {
+                  duration: 0.5,
+                },
+              }}
               exit={{
                 opacity: 0,
                 scale: 0,
@@ -174,8 +180,7 @@ export default function Home() {
                 duration: 0.9,
               }}
             >
-              <AlertTriangle width={80} height={80} />
-              {/* <ExclamationCircleIcon width={80} height={80} />{" "} */}
+              <AlertCircle width={80} height={80} strokeWidth={2.5} />
             </motion.div>
             <motion.span
               initial={{ opacity: 0, x: 150, filter: "blur(2px)" }}
@@ -202,6 +207,19 @@ export default function Home() {
     }
   }, [buttonState]);
 
+  useEffect(() => {
+    const states = ["loading", "success", "loading", "failed", "loading"];
+    let index = 0;
+    const intervalId = setInterval(() => {
+      setButtonState(states[index]);
+      index = (index + 1) % states.length;
+    }, 2000);
+
+    setButtonState("default");
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="flex flex-col  p-8 pb-20 gap-16 sm:p-20 ">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -218,23 +236,23 @@ export default function Home() {
               <div key={idx} className="mt-10 space-y-4">
                 <p> {idx}. Family Happy Button Animation</p>
                 <div className="rounded-xl border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-[50rem]  px-4 ">
-                  <div className=" cursor-pointer grid place-items-center  text-white">
+                  <div className="font-[family-name:var(--font-open-runde-bold)]  cursor-pointer grid place-items-center  text-white">
                     <motion.div
-                      onClick={() => {
-                        if (isGreen) {
-                          setIsGreen(false);
-                        } else setIsGreen(true);
+                      // onClick={() => {
+                      //   if (!isGreen) {
+                      //     setIsGreen(true);
+                      //   } else setIsGreen(false);
 
-                        setTimeout(() => {
-                          if (isGreen) {
-                            setButtonState("success");
-                          } else {
-                            setButtonState("failed");
-                          }
-                        }, 2000);
+                      //   setTimeout(() => {
+                      //     if (!isGreen) {
+                      //       setButtonState("success");
+                      //     } else {
+                      //       setButtonState("failed");
+                      //     }
+                      //   }, 2000);
 
-                        setButtonState("loading");
-                      }}
+                      //   setButtonState("loading");
+                      // }}
                       animate={buttonState}
                       variants={{
                         default: {
@@ -250,7 +268,7 @@ export default function Home() {
                         success: {
                           backgroundColor: "#d1fae5",
                           color: "#10b981",
-                          width: 600,
+                          width: 601,
                         },
                         failed: {
                           backgroundColor: "#fee2e2",

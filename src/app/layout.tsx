@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openRundeRegular.variable} ${openRundeMedium.variable} ${openRundeSemibold.variable} ${openRundeBold.variable} font-[family-name:var(--font-open-runde-regular)] antialiased`}
+        className={`${openRundeRegular.variable} ${openRundeMedium.variable} ${openRundeSemibold.variable} ${openRundeBold.variable}  antialiased`}
       >
         {children}
       </body>
