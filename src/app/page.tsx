@@ -3,7 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertCircle, CheckCircle, Loader, Star } from "react-feather";
+import { AlertCircle, Loader, Star } from "react-feather";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   const [buttonState, setButtonState] = useState("default");
@@ -108,7 +109,7 @@ export default function Home() {
         return (
           <motion.div
             key="success"
-            className="flex overflow-hidden  items-center gap-6"
+            className="flex overflow-hidden  items-center gap-3"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
@@ -126,7 +127,13 @@ export default function Home() {
                 duration: 0.9,
               }}
             >
-              <CheckCircle width={70} height={70} strokeWidth={2.5} />
+              <CheckCircle2
+                width={80}
+                height={80}
+                strokeWidth={2}
+                stroke="#d1fae5"
+                fill="currentColor"
+              />
             </motion.div>
             <motion.span
               initial={{ opacity: 0, x: 150, filter: "blur(2px)" }}
@@ -154,7 +161,7 @@ export default function Home() {
         return (
           <motion.div
             key="failed"
-            className="flex overflow-hidden  items-center gap-6"
+            className="flex overflow-hidden  items-center gap-4"
           >
             {" "}
             <motion.div
@@ -180,7 +187,13 @@ export default function Home() {
                 duration: 0.9,
               }}
             >
-              <AlertCircle width={80} height={80} strokeWidth={2.5} />
+              <AlertCircle
+                width={80}
+                height={80}
+                strokeWidth={2.5}
+                stroke="#fee2e2"
+                fill="currentColor"
+              />
             </motion.div>
             <motion.span
               initial={{ opacity: 0, x: 150, filter: "blur(2px)" }}
@@ -200,7 +213,7 @@ export default function Home() {
               }}
               className=" text-nowrap "
             >
-              Transaction Warning
+              Transaction Failed
             </motion.span>
           </motion.div>
         );
@@ -208,16 +221,17 @@ export default function Home() {
   }, [buttonState]);
 
   useEffect(() => {
-    const states = ["loading", "success", "loading", "failed", "loading"];
-    let index = 0;
-    const intervalId = setInterval(() => {
-      setButtonState(states[index]);
-      index = (index + 1) % states.length;
+    setTimeout(() => {
+      const states = ["loading", "failed", "loading", "success", "loading"];
+      let index = 0;
+      const intervalId = setInterval(() => {
+        setButtonState(states[index]);
+        index = (index + 1) % states.length;
+      }, 2000);
+
+      return () => clearInterval(intervalId);
     }, 2000);
-
-    setButtonState("default");
-
-    return () => clearInterval(intervalId);
+    setButtonState("success");
   }, []);
 
   return (
@@ -234,7 +248,10 @@ export default function Home() {
           {[...Array(4)].map((_, idx) => {
             return (
               <div key={idx} className="mt-10 space-y-4">
-                <p> {idx}. Family Happy Button Animation</p>
+                <p>
+                  {/* {idx}. */}
+                  Fluid Family Button
+                </p>
                 <div className="rounded-xl border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-[50rem]  px-4 ">
                   <div className="font-[family-name:var(--font-open-runde-bold)]  cursor-pointer grid place-items-center  text-white">
                     <motion.div
@@ -273,7 +290,7 @@ export default function Home() {
                         failed: {
                           backgroundColor: "#fee2e2",
                           color: "#ef4444",
-                          width: 710,
+                          width: 660,
                         },
                       }}
                       transition={{
