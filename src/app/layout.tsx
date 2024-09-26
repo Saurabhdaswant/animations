@@ -2,15 +2,28 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const openRundeRegular = localFont({
+  src: "./fonts/OpenRunde-Regular.woff",
+  variable: "--font-open-runde-regular",
+  weight: "400", // Assuming 400 is the weight for Regular as per your CSS
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const openRundeMedium = localFont({
+  src: "./fonts/OpenRunde-Medium.woff",
+  variable: "--font-open-runde-medium",
+  weight: "500", // Assuming 500 is the weight for Medium as per your CSS
+});
+
+const openRundeSemibold = localFont({
+  src: "./fonts/OpenRunde-Semibold.woff",
+  variable: "--font-open-runde-semibold",
+  weight: "600", // Assuming 600 is the weight for Semibold as per your CSS
+});
+
+const openRundeBold = localFont({
+  src: "./fonts/OpenRunde-Bold.woff",
+  variable: "--font-open-runde-bold",
+  weight: "700", // Assuming 700 is the weight for Bold as per your CSS
 });
 
 export const metadata: Metadata = {
@@ -26,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${openRundeRegular.variable} ${openRundeMedium.variable} ${openRundeSemibold.variable} ${openRundeBold.variable} font-[family-name:var(--font-open-runde-regular)] antialiased`}
       >
         {children}
       </body>
