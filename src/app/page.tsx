@@ -8,7 +8,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function Home() {
   const [buttonState, setButtonState] = useState("default");
-  const [isGreen, setIsGreen] = useState(false);
+  // const [isGreen, setIsGreen] = useState(false);
 
   const content = useMemo(() => {
     switch (buttonState) {
