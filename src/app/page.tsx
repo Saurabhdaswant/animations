@@ -237,15 +237,15 @@ export default function Home() {
   return (
     <div className="flex w-full md:w-[80%] mx-auto flex-col font-[family-name:var(--font-open-runde-bold)]  p-8 pb-20 gap-16 sm:p-20 ">
       <main className="flex flex-col text-[#2e2e2e] gap-4 row-start-2 items-center sm:items-start">
-        <h1 className=" text-6xl">Crafts</h1>
+        <h1 className=" text-6xl ">Crafts</h1>
         <p className=" text-3xl">
           {" "}
-          Check out the animations {""}
+          Check out animations {""}
           <a
             href="https://x.com/DaswantSaurabh"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-blue-400 space-x-1 cursor-pointer"
+            className="underline hover:text-blue-400 space-x-1 cursor-pointer"
           >
             I
           </a>{" "}
@@ -262,7 +262,7 @@ export default function Home() {
                   {/* {idx}. */}
                   Fluid Family Button
                 </p>
-                <div className="rounded-xl border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[50rem]  px-4 ">
+                <div className="rounded-xl border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[30rem]  px-4 ">
                   <div className="font-[family-name:var(--font-open-runde-bold)]  cursor-pointer grid place-items-center  text-white">
                     <motion.div
                       // onClick={() => {
