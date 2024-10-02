@@ -1,13 +1,17 @@
 "use client";
 
+import TagsContainer from "@/components/Bookmark";
+import CalendarWidget from "@/components/CalendarWidget";
 import FamilyButton from "@/components/FamilyButton";
 
 export default function Home() {
   return (
-    <div className="flex w-full md:w-[80%] mx-auto flex-col font-[family-name:var(--font-open-runde-bold)]  p-8 pb-20 gap-16 sm:p-20 ">
+    <div className="flex w-full md:w-[80%] mx-auto flex-col font-[family-name:var(--font-open-runde-medium)]  p-8 pb-20 gap-16 sm:p-20 ">
       <main className="flex flex-col text-[#2e2e2e] gap-4 row-start-2 items-center sm:items-start">
-        <h1 className=" text-6xl ">Crafts</h1>
-        <p className=" text-3xl">
+        <h1 className=" text-6xl font-[family-name:var(--font-open-runde-bold)] ">
+          Crafts
+        </h1>
+        <p className=" text-3xl font-[family-name:var(--font-open-runde-medium)]">
           {" "}
           Check out animations {""}
           <a
@@ -22,6 +26,8 @@ export default function Home() {
         </p>
         <div className="mt-10 w-full">
           <FamilyButton />
+          <CalendarWidget />
+          <TagsContainer />
         </div>
       </main>
     </div>
