@@ -235,24 +235,34 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col  p-8 pb-20 gap-16 sm:p-20 ">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className=" text-7xl">Framer Motion Crafts</h1>
-        <p className=" text-xl">
+    <div className="flex w-full md:w-[80%] mx-auto flex-col font-[family-name:var(--font-open-runde-bold)]  p-8 pb-20 gap-16 sm:p-20 ">
+      <main className="flex flex-col text-[#2e2e2e] gap-4 row-start-2 items-center sm:items-start">
+        <h1 className=" text-6xl">Crafts</h1>
+        <p className=" text-3xl">
           {" "}
-          these animations are built by{" "}
-          <strong className="text-blue-400">@daswantsaurabh</strong> for
-          learning purpose
+          Check out the animations {""}
+          <a
+            href="https://x.com/DaswantSaurabh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-400 space-x-1 cursor-pointer"
+          >
+            I
+          </a>{" "}
+          crafted while learning Framer Motion!{" "}
+          {/* animations are crafted by{" "} */}
+          {/* <strong className="text-blue-400">@daswantsaurabh</strong> for */}
+          {/* learning purpose */}
         </p>
         <div className="mt-10 w-full">
           {[...Array(4)].map((_, idx) => {
             return (
-              <div key={idx} className="mt-10 space-y-4">
-                <p>
+              <div key={idx} className="mt-10    space-y-4">
+                <p className="">
                   {/* {idx}. */}
                   Fluid Family Button
                 </p>
-                <div className="rounded-xl border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-[50rem]  px-4 ">
+                <div className="rounded-xl border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[50rem]  px-4 ">
                   <div className="font-[family-name:var(--font-open-runde-bold)]  cursor-pointer grid place-items-center  text-white">
                     <motion.div
                       // onClick={() => {
