@@ -237,7 +237,6 @@ export default function FamilyButton() {
   return (
     <div className="mt-10    space-y-4">
       <p className="font-[family-name:var(--font-open-runde-bold)]">
-        {/* {idx}. */}
         Fluid Family Button
       </p>
       <div className="rounded-xl border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[30rem]  px-4 ">
