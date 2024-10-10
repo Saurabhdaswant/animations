@@ -90,7 +90,7 @@ export default function TagsContainer() {
                             y: idx === 2 ? 40 : 0,
                             opacity: 0,
                           }}
-                          className={`w-20  h-7 flex items-center justify-end  rounded bg-white border shadow `}
+                          className={`w-20  h-7 flex items-center justify-end  rounded bg-white border shadow-sm hover:shadow-md transition-shadow `}
                         >
                           <svg
                             onClick={() => {
@@ -132,7 +132,7 @@ export default function TagsContainer() {
                   }}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="size-6 fill-gray-700 cursor-pointer"
+                  className="size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer"
                 >
                   <path
                     fill-rule="evenodd"
@@ -145,7 +145,7 @@ export default function TagsContainer() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="size-6 fill-gray-700 cursor-pointer"
+                  className="size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer"
                   onClick={() => {
                     setLils([1]);
                     showInput();
@@ -162,7 +162,7 @@ export default function TagsContainer() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="size-6 fill-gray-700 cursor-pointer"
+                  className="size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer"
                 >
                   <path
                     fill-rule="evenodd"
