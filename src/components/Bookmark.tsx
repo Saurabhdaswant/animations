@@ -145,7 +145,9 @@ export default function TagsContainer() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer"
+                  className={` size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer ${
+                    isInputVisible ? "  " : " cursor-not-allowed "
+                  }`}
                   onClick={() => {
                     setLils([1]);
                     showInput();
@@ -162,7 +164,9 @@ export default function TagsContainer() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  className="size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer"
+                  className={` size-6 fill-gray-500 hover:fill-gray-700 transition-colors cursor-pointer ${
+                    isInputVisible ? "  " : " cursor-not-allowed "
+                  }`}
                 >
                   <path
                     fill-rule="evenodd"
