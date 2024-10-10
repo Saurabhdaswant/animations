@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { Bookmark, Save, Trash, X } from "react-feather";
 import useToggle from "@/hooks/useToggle";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function TagsContainer() {
   const [isInputVisible, showInput] = useToggle(false);

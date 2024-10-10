@@ -239,7 +239,7 @@ export default function FamilyButton() {
       <p className="font-[family-name:var(--font-open-runde-bold)]">
         Fluid Family Button
       </p>
-      <div className="rounded-xl border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[30rem]  px-4 ">
+      <div className="rounded-xl  border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[30rem]  px-4 ">
         <div className="font-[family-name:var(--font-open-runde-bold)]  cursor-pointer grid place-items-center  text-white">
           <motion.div
             // onClick={() => {
@@ -284,7 +284,7 @@ export default function FamilyButton() {
               type: "spring",
               bounce: 0.4,
             }}
-            className=" py-10 px-14 text-5xl  rounded-full font-bold"
+            className=" py-10 scale-50 px-14 text-5xl  rounded-full font-bold"
           >
             <AnimatePresence mode="popLayout">{content}</AnimatePresence>
           </motion.div>
