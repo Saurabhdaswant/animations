@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import useToggle from "@/hooks/useToggle";
 import { CameraIcon, UsersIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
+import { Hourglass } from "lucide-react";
 
 export default function Timer() {
   const [state, setState] = useState("days");
@@ -21,11 +22,7 @@ export default function Timer() {
               className={` flex justify-between px-4 pb-4 border-b border-slate-100`}
             >
               <div className="flex items-center  gap-2">
-                <CameraIcon
-                  width={20}
-                  height={20}
-                  className="text-orange-400"
-                />{" "}
+                <Hourglass width={20} height={20} className="text-orange-400" />{" "}
                 <div className="text-sm font-medium uppercase">
                   how old am i ?
                 </div>
@@ -64,7 +61,9 @@ export default function Timer() {
             </div>
 
             <div className="  flex flex-col items-center justify-center pt-4 px-4">
-              <div className="text-2xl  mt-0.5 text-[#2e2e2e90]">your are </div>
+              <div className=" font-thin  mt-0.5 text-[#2e2e2e5e]">
+                your are{" "}
+              </div>
               <AnimatePresence mode="popLayout" initial={false}>
                 {state === "days" && (
                   <motion.div
@@ -90,8 +89,10 @@ export default function Timer() {
                       filter: "blur(4px)",
                     }}
                   >
-                    <div className="text-2xl font-medium"> 120 </div>
-                    <div className="text-2xl mt-0.5 text-[#2e2e2e90]">days</div>
+                    <div className="text-[40px] my-4 font-medium"> 7,746 </div>
+                    <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
+                      days
+                    </div>
                   </motion.div>
                 )}
                 {state === "months" && (
@@ -118,8 +119,8 @@ export default function Timer() {
                       filter: "blur(4px)",
                     }}
                   >
-                    <div className="text-2xl font-medium"> 120 </div>
-                    <div className="text-2xl mt-0.5 text-[#2e2e2e90]">
+                    <div className="text-[40px] my-4 font-medium"> 254 </div>
+                    <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
                       months
                     </div>
                   </motion.div>
@@ -148,8 +149,8 @@ export default function Timer() {
                       filter: "blur(4px)",
                     }}
                   >
-                    <div className="text-2xl font-medium"> 120 </div>
-                    <div className="text-2xl mt-0.5 text-[#2e2e2e90]">
+                    <div className="text-[40px] my-4 font-medium"> 21 </div>
+                    <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
                       years
                     </div>
                   </motion.div>
