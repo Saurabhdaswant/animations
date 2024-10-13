@@ -33,7 +33,9 @@ export default function Timer() {
               className={`flex items-center justify-between px-4 py-4 border-b border-slate-100`}
             >
               <div
-                className="text-sm font-medium uppercase"
+                className={`text-sm font-medium uppercase ${
+                  state === "days" ? "text-gray-500" : ""
+                }`}
                 onClick={() => {
                   setState("days");
                   setPrevState("days");
@@ -42,7 +44,9 @@ export default function Timer() {
                 Days
               </div>
               <div
-                className="text-sm font-medium uppercase"
+                className={`text-sm font-medium uppercase ${
+                  state === "months" ? "text-gray-500" : ""
+                }`}
                 onClick={() => {
                   setState("months");
                 }}
@@ -50,7 +54,9 @@ export default function Timer() {
                 Months
               </div>
               <div
-                className="text-sm font-medium uppercase"
+                className={`text-sm font-medium uppercase ${
+                  state === "years" ? "text-gray-500" : ""
+                }`}
                 onClick={() => {
                   setState("years");
                   setPrevState("years");
