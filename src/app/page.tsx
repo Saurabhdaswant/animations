@@ -3,6 +3,7 @@
 import TagsContainer from "@/components/Bookmark";
 import CalendarWidget from "@/components/CalendarWidget";
 import FamilyButton from "@/components/FamilyButton";
+import Timer from "@/components/Timer";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
           <FamilyButton />
           <CalendarWidget />
           <TagsContainer />
+          <Timer />
         </div>
       </main>
     </div>
