@@ -1,6 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import useToggle from "@/hooks/useToggle";
-import { CameraIcon, UsersIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 import { Hourglass } from "lucide-react";
 
