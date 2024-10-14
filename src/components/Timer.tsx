@@ -78,7 +78,9 @@ export default function Timer() {
                       layout
                       className=" w-fit text-center  "
                       transition={{
-                        duration: 0.25,
+                        type: "ease-in-out",
+                        bounce: 0,
+                        duration: 0.35,
                       }}
                       initial={{
                         opacity: 0,
@@ -111,7 +113,9 @@ export default function Timer() {
                       layout
                       className=" w-fit text-center  "
                       transition={{
-                        duration: 0.25,
+                        type: "ease-in-out",
+                        bounce: 0,
+                        duration: 0.35,
                       }}
                       initial={{
                         opacity: 0,
@@ -141,7 +145,9 @@ export default function Timer() {
                       key="years"
                       className=" w-fit text-center  "
                       transition={{
-                        duration: 0.25,
+                        type: "ease-in-out",
+                        bounce: 0,
+                        duration: 0.35,
                       }}
                       initial={{
                         opacity: 0,
