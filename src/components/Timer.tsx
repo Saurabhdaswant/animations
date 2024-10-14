@@ -15,8 +15,8 @@ export default function Timer() {
       </p>
       <div className="rounded-xl border border-solid border-black/[.08]  transition-colors flex items-center justify-center bg-white  hover:border-transparent text-sm sm:text-base h-[30rem]  px-4 ">
         <div className="font-[family-name:var(--font-open-runde-bold)]  cursor-pointer grid place-items-center  text-white">
-          <motion.div
-            className={`overflow-hidden cursor-pointer w-[450px] select-none shadow-lg  py-4    transition-colors  rounded-xl text-[#2e2e2e] bg-white  border border-slate-100 `}
+          <div
+            className={` cursor-pointer w-[450px] select-none shadow-lg  py-4    transition-colors  rounded-xl text-[#2e2e2e] bg-white border  overflow-hidden border-slate-100 `}
           >
             <div
               className={` flex justify-between px-4 pb-4 border-b border-slate-100`}
@@ -66,104 +66,109 @@ export default function Timer() {
               </div>
             </div>
 
-            <div className="  flex flex-col items-center justify-center pt-4 px-4">
+            <div className=" flex flex-col items-center justify-center pt-4 px-4">
               <div className=" font-thin  mt-0.5 text-[#2e2e2e5e]">
                 your are{" "}
               </div>
-              <AnimatePresence mode="popLayout" initial={false}>
-                {state === "days" && (
-                  <motion.div
-                    key="days"
-                    layout
-                    className=" w-fit text-center"
-                    transition={{
-                      duration: 0.25,
-                    }}
-                    initial={{
-                      opacity: 0,
-                      x: prevState === "days" ? -400 : 400,
-                      filter: "blur(4px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      filter: "blur(0px)",
-                    }}
-                    exit={{
-                      x: prevState === "days" ? -400 : 400,
-                      opacity: 0,
-                      filter: "blur(4px)",
-                    }}
-                  >
-                    <div className="text-[40px] my-4 font-medium"> 7,746 </div>
-                    <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
-                      days
-                    </div>
-                  </motion.div>
-                )}
-                {state === "months" && (
-                  <motion.div
-                    key="months"
-                    layout
-                    className=" w-fit text-center"
-                    transition={{
-                      duration: 0.25,
-                    }}
-                    initial={{
-                      opacity: 0,
-                      x: prevState === "days" ? 400 : -400,
-                      filter: "blur(4px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      filter: "blur(0px)",
-                    }}
-                    exit={{
-                      x: prevState === "days" ? -400 : 400,
-                      opacity: 0,
-                      filter: "blur(4px)",
-                    }}
-                  >
-                    <div className="text-[40px] my-4 font-medium"> 254 </div>
-                    <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
-                      months
-                    </div>
-                  </motion.div>
-                )}{" "}
-                {state === "years" && (
-                  <motion.div
-                    layout
-                    key="years"
-                    className=" w-fit text-center"
-                    transition={{
-                      duration: 0.25,
-                    }}
-                    initial={{
-                      opacity: 0,
-                      x: prevState === "years" ? 400 : -400,
-                      filter: "blur(4px)",
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      filter: "blur(0px)",
-                    }}
-                    exit={{
-                      x: prevState === "years" ? 400 : -400,
-                      opacity: 0,
-                      filter: "blur(4px)",
-                    }}
-                  >
-                    <div className="text-[40px] my-4 font-medium"> 21 </div>
-                    <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
-                      years
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div className="relative mt-4">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  {state === "days" && (
+                    <motion.div
+                      key="days"
+                      layout
+                      className=" w-fit text-center  "
+                      transition={{
+                        duration: 0.25,
+                      }}
+                      initial={{
+                        opacity: 0,
+                        x: prevState === "days" ? -400 : 400,
+                        filter: "blur(4px)",
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        filter: "blur(0px)",
+                      }}
+                      exit={{
+                        x: prevState === "days" ? -400 : 400,
+                        opacity: 0,
+                        filter: "blur(4px)",
+                      }}
+                    >
+                      <div className="text-[40px]  font-medium mb-4">
+                        {" "}
+                        7,746{" "}
+                      </div>
+                      <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
+                        days
+                      </div>
+                    </motion.div>
+                  )}
+                  {state === "months" && (
+                    <motion.div
+                      key="months"
+                      layout
+                      className=" w-fit text-center  "
+                      transition={{
+                        duration: 0.25,
+                      }}
+                      initial={{
+                        opacity: 0,
+                        x: prevState === "days" ? 400 : -400,
+                        filter: "blur(4px)",
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        filter: "blur(0px)",
+                      }}
+                      exit={{
+                        x: prevState === "days" ? -400 : 400,
+                        opacity: 0,
+                        filter: "blur(4px)",
+                      }}
+                    >
+                      <div className="text-[40px]  font-medium mb-4"> 254 </div>
+                      <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
+                        months
+                      </div>
+                    </motion.div>
+                  )}{" "}
+                  {state === "years" && (
+                    <motion.div
+                      layout
+                      key="years"
+                      className=" w-fit text-center  "
+                      transition={{
+                        duration: 0.25,
+                      }}
+                      initial={{
+                        opacity: 0,
+                        x: prevState === "years" ? 400 : -400,
+                        filter: "blur(4px)",
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        filter: "blur(0px)",
+                      }}
+                      exit={{
+                        x: prevState === "years" ? 400 : -400,
+                        opacity: 0,
+                        filter: "blur(4px)",
+                      }}
+                    >
+                      <div className="text-[40px]  font-medium mb-4"> 21 </div>
+                      <div className="font-thin mt-0.5 text-[#2e2e2e5e]">
+                        years
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
