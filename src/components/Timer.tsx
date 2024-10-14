@@ -33,7 +33,7 @@ export default function Timer() {
               <div className="relative w-full">
                 <motion.div
                   className={`text-sm z-20 transition-colors relative font-medium text-center uppercase ${
-                    state === "days" ? "" : "text-gray-400"
+                    state === "days" ? "" : "text-[#2e2e2e5e]"
                   }`}
                   onClick={() => {
                     setState("days");
@@ -52,7 +52,7 @@ export default function Timer() {
               <div className="relative w-full">
                 <motion.div
                   className={`text-sm z-20 relative font-medium transition-colors text-center uppercase ${
-                    state === "months" ? "" : "text-gray-400"
+                    state === "months" ? "" : "text-[#2e2e2e5e]"
                   }`}
                   onClick={() => {
                     setState("months");
@@ -70,7 +70,7 @@ export default function Timer() {
               <div className="relative w-full">
                 <motion.div
                   className={`text-sm z-20 relative font-medium transition-colors text-center uppercase ${
-                    state === "years" ? "" : "text-gray-400"
+                    state === "years" ? "" : "text-[#2e2e2e5e]"
                   }`}
                   onClick={() => {
                     setState("years");
