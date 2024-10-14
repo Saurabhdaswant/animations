@@ -18,9 +18,7 @@ export default function Timer() {
           <div
             className={` cursor-pointer w-[450px] select-none shadow-lg  py-4    transition-colors  rounded-xl text-[#2e2e2e] bg-white border  overflow-hidden border-slate-100 `}
           >
-            <div
-              className={` flex justify-between px-4 pb-4 border-b border-slate-100`}
-            >
+            <div className={` flex justify-between px-4 pb-4 `}>
               <div className="flex items-center  gap-2">
                 <Hourglass width={20} height={20} className="text-orange-400" />{" "}
                 <div className="text-sm font-medium uppercase">
@@ -30,39 +28,63 @@ export default function Timer() {
             </div>
 
             <div
-              className={`flex items-center justify-between px-4 py-4 border-b border-slate-100`}
+              className={`flex mx-4 rounded-md items-center justify-between px-2 py-4   bg-gray-50 `}
             >
-              <div
-                className={`text-sm font-medium uppercase ${
-                  state === "days" ? "text-gray-500" : ""
-                }`}
-                onClick={() => {
-                  setState("days");
-                  setPrevState("days");
-                }}
-              >
-                Days
+              <div className="relative w-full">
+                <motion.div
+                  className={`text-sm z-20 transition-colors relative font-medium text-center uppercase ${
+                    state === "days" ? "" : "text-gray-400"
+                  }`}
+                  onClick={() => {
+                    setState("days");
+                    setPrevState("days");
+                  }}
+                >
+                  Days
+                </motion.div>
+                {state === "days" && (
+                  <motion.div
+                    layoutId="work"
+                    className=" absolute w-full px-8 py-5  h-6 z-10 -top-2.5 bg-white rounded shadow"
+                  ></motion.div>
+                )}
               </div>
-              <div
-                className={`text-sm font-medium uppercase ${
-                  state === "months" ? "text-gray-500" : ""
-                }`}
-                onClick={() => {
-                  setState("months");
-                }}
-              >
-                Months
+              <div className="relative w-full">
+                <motion.div
+                  className={`text-sm z-20 relative font-medium transition-colors text-center uppercase ${
+                    state === "months" ? "" : "text-gray-400"
+                  }`}
+                  onClick={() => {
+                    setState("months");
+                  }}
+                >
+                  Months
+                </motion.div>
+                {state === "months" && (
+                  <motion.div
+                    layoutId="work"
+                    className=" absolute w-full px-8 py-5  h-6 z-10 -top-2.5 bg-white rounded shadow"
+                  ></motion.div>
+                )}
               </div>
-              <div
-                className={`text-sm font-medium uppercase ${
-                  state === "years" ? "text-gray-500" : ""
-                }`}
-                onClick={() => {
-                  setState("years");
-                  setPrevState("years");
-                }}
-              >
-                Years
+              <div className="relative w-full">
+                <motion.div
+                  className={`text-sm z-20 relative font-medium transition-colors text-center uppercase ${
+                    state === "years" ? "" : "text-gray-400"
+                  }`}
+                  onClick={() => {
+                    setState("years");
+                    setPrevState("years");
+                  }}
+                >
+                  Years
+                </motion.div>
+                {state === "years" && (
+                  <motion.div
+                    layoutId="work"
+                    className=" absolute w-full px-8 py-5  h-6 z-10 -top-2.5 bg-white rounded shadow"
+                  ></motion.div>
+                )}
               </div>
             </div>
 
