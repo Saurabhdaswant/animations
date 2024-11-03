@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Film, X } from "react-feather";
+import {
+  ComputerDesktopIcon,
+  DevicePhoneMobileIcon,
+  VideoCameraIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/16/solid";
+import { XMarkIcon } from "@heroicons/react/20/solid";
 type Transaction = {
-  icon: string;
+  icon: any;
   name: string;
   category: string;
   amount: string;
@@ -15,7 +23,7 @@ type Transaction = {
 
 const transactions: Transaction[] = [
   {
-    icon: "📄",
+    icon: <VideoCameraIcon className="w-6 h-6" />,
     name: "Netflix",
     category: "Subscription",
     amount: "-$6.99",
@@ -26,7 +34,7 @@ const transactions: Transaction[] = [
     cardNumber: "XXXX 9342",
   },
   {
-    icon: "📊",
+    icon: <DevicePhoneMobileIcon className="w-6 h-6" />,
     name: "Verizon",
     category: "Mobile Recharge",
     amount: "-$4.05",
@@ -37,7 +45,7 @@ const transactions: Transaction[] = [
     cardNumber: "XXXX 1234",
   },
   {
-    icon: "📄",
+    icon: <ComputerDesktopIcon className="w-6 h-6" />,
     name: "Rive",
     category: "Subscription",
     amount: "-$32.00",
@@ -48,7 +56,7 @@ const transactions: Transaction[] = [
     cardNumber: "XXXX 9342",
   },
   {
-    icon: "🍔",
+    icon: <ShoppingBagIcon className="w-6 h-6" />,
     name: "Big Belly Burger",
     category: "Restaurant",
     amount: "-$12.05",
@@ -83,19 +91,36 @@ const Transactions = () => {
           ) : (
             <motion.div
               layoutId="dad"
-              className="w-80 bg-white rounded-lg shadow-lg p-4 space-y-4"
+              className="w-80 bg-white border border-slate-100 rounded-3xl shadow-lg p-5 space-y-4"
             >
-              <h2 className="text-gray-600 font-semibold">Transactions</h2>
+              <motion.h2
+                layout="position"
+                className="text-[#2e2e2e] font-semibold text-lg"
+              >
+                Transactions
+              </motion.h2>
               <div className="space-y-3">
                 {transactions.map((transaction, index) => (
                   <motion.div
                     key={index}
                     initial={{
                       opacity: prevTran?.name === transaction.name ? 1 : 0,
+                      // filter:
+                      //   prevTran?.name === transaction.name
+                      //     ? "blur(0px)"
+                      //     : "blur(4px)",
                     }}
-                    animate={{ opacity: 1 }}
+                    animate={{
+                      opacity: 1,
+
+                      // filter: "blur(0px)"
+                    }}
                     exit={{
                       opacity: prevTran?.name === transaction.name ? 1 : 0,
+                      // filter:
+                      //   prevTran?.name === transaction.name
+                      //     ? "blur(0px)"
+                      //     : "blur(4px)",
                     }}
                     transition={{
                       duration: 0.5,
@@ -138,15 +163,20 @@ const Transactions = () => {
                 ))}
               </div>
               <motion.button
+                layout="position"
+                style={{
+                  padding: "10px 0",
+                }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{
-                  duration: 1,
+                  duration: 0.8,
                 }}
-                className="w-full bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 text-center py-2 rounded-md transition duration-500 ease-in-out"
+                className="w-full rounded-full space-x-2 flex items-center justify-center bg-black text-white font-semibold hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 text-center   transition duration-500 ease-in-out"
               >
-                All Transactions →
+                <ArrowRight size={22} />
+                <span> All Transactions</span>
               </motion.button>
             </motion.div>
           )}
@@ -174,15 +204,20 @@ const TransactionDetail: React.FC<any> = ({
     <motion.div
       onClick={onClose}
       layoutId="dad"
-      className="w-80 bg-white rounded-lg shadow-lg p-4 space-y-4 pb-4"
+      className="w-80 bg-white relative border border-slate-100 rounded-3xl shadow-lg p-5 pt-0 space-y-4"
     >
       {/* Close Button */}
-      <button
-        onClick={onClose}
-        // className="absolute top-3 right-3 text-gray-400 hover:text-gray-600"
+      <motion.div
+        layout="position"
+        className="cursor-pointer absolute right-4 top-4 p-1.5 bg-gray-100 rounded-full"
       >
-        &times;
-      </button>
+        <X
+          onClick={onClose}
+          size={18}
+          strokeWidth={3}
+          className="text-gray-800 "
+        />
+      </motion.div>
 
       {/* Header */}
       <motion.div
@@ -190,7 +225,7 @@ const TransactionDetail: React.FC<any> = ({
         className=""
       >
         <motion.div
-          className="w-10 h-10 flex items-center justify-center bg-gray-800 text-white rounded-full text-lg"
+          className="w-10 mt-0 h-10 flex items-center justify-center bg-gray-800 text-white rounded-full text-lg"
           layoutId={`${name}-icon`}
         >
           {icon}
@@ -231,7 +266,10 @@ const TransactionDetail: React.FC<any> = ({
         exit={{ y: 40, opacity: 0 }}
         transition={{ type: "spring", bounce: 0 }}
       >
-        <motion.hr className="border-gray-300" layout="position" />
+        <motion.hr
+          className="  border-dashed border-gray-300"
+          layout="position"
+        />
 
         {/* Details */}
         <motion.div className="space-y-1 mt-4" layout="position">
