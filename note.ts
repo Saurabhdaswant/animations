@@ -1,13 +1,40 @@
-// descripton :
-// this components morphs in two states
-// like our apples card component which has detailed view on clicked
-// you can look in animations.dev for reference on how to do stuff like this
-// this has something to do with layout id
-// this component is easy as fuck
+// first screen :
+// - green show case card ui
+// - title
+// - description
+// - three cards section
 
-// two states ie : two cards
+// second screen :
+// - title
+// - desc
+// - green card
+// - text
 
-// function :
-// on click any item from the list the item should morph into a detailed card replaceing the first / og
+// third screen :
+// green small card
+// title and descri
+// input
+// button
 
-// animation : smooth transition between first and second card and the position change also which is done by using layoutId
+// shared layout animation / transtion
+// on click on of the three cards we move to second screen
+// transtion :
+//  - cards and text fade and go down
+//  - green card transitions to second screen's green card
+//  - second screen's title comes from slight bottom to top with fade
+// on click second green card we move to third screen
+// transition :
+//  - second screens' text content go to left side
+//  - third screens's text content come from right side
+//  - green card now turns to a small green card at top (shared layout)
+
+// how i recreate animations
+
+// - record og animation
+// - rewatch multiple times
+// - draw a sketch for better visuallization
+// - note down screens and transitions for better uderstanding
+// - start writing markup code
+// - get the basic animation working
+// - work on details
+// - polish the ui
