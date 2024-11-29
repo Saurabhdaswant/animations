@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Film, X } from "react-feather";
+import { ArrowRight, X } from "react-feather";
 import {
   ComputerDesktopIcon,
   DevicePhoneMobileIcon,
   VideoCameraIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/16/solid";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+
 type Transaction = {
   icon: any;
   name: string;
@@ -105,22 +105,12 @@ const Transactions = () => {
                     key={index}
                     initial={{
                       opacity: prevTran?.name === transaction.name ? 1 : 0,
-                      // filter:
-                      //   prevTran?.name === transaction.name
-                      //     ? "blur(0px)"
-                      //     : "blur(4px)",
                     }}
                     animate={{
                       opacity: 1,
-
-                      // filter: "blur(0px)"
                     }}
                     exit={{
                       opacity: prevTran?.name === transaction.name ? 1 : 0,
-                      // filter:
-                      //   prevTran?.name === transaction.name
-                      //     ? "blur(0px)"
-                      //     : "blur(4px)",
                     }}
                     transition={{
                       duration: 0.5,
@@ -220,10 +210,7 @@ const TransactionDetail: React.FC<any> = ({
       </motion.div>
 
       {/* Header */}
-      <motion.div
-        // layoutId={name}
-        className=""
-      >
+      <motion.div>
         <motion.div
           className="w-10 mt-0 h-10 flex items-center justify-center bg-gray-800 text-white rounded-full text-lg"
           layoutId={`${name}-icon`}
@@ -259,7 +246,6 @@ const TransactionDetail: React.FC<any> = ({
 
       {/* Divider */}
       <motion.div
-        // layout="position"
         className=" mt-4"
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
