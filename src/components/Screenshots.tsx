@@ -1,3 +1,4 @@
+import { PhotoIcon } from "@heroicons/react/16/solid";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import { Chrome } from "react-feather";
@@ -18,12 +19,13 @@ const ScreenshotItem = ({ screenshot, onScreenshotClick }: any) => {
     <motion.span
       onClick={handleClick}
       layoutId={screenshot}
-      className="relative h-40 min-w-60 cursor-pointer rounded-md text-xs font-medium"
+      className="relative h-40 min-w-60 cursor-pointer  text-xs font-medium"
     >
       <img
         src={screenshot}
+        style={{ borderRadius: "6px" }}
         alt="Screenshot"
-        className="absolute inset-0 h-full w-full rounded-md object-cover"
+        className="absolute inset-0 h-full w-full  object-cover"
       />
     </motion.span>
   );
@@ -47,7 +49,7 @@ export default function Screenshots() {
   };
 
   const handleExtensionToggle = () => {
-    setShowExtension(!showExtension);
+    setShowExtension(true);
   };
 
   return (
@@ -84,38 +86,67 @@ export default function Screenshots() {
                     bounce: 0,
                     duration: 0.5,
                   }}
-                  className="absolute z-50 h-[80%] w-[80%] rounded-md"
+                  className="absolute z-50 h-[80%] w-[80%] "
                 >
                   <img
+                    style={{ borderRadius: "6px" }}
                     src={currentScreenshot}
                     alt="Screenshot"
-                    className="absolute inset-0 h-full w-full rounded-md object-contain"
+                    className="absolute inset-0 h-full w-full  object-contain"
                   />
                 </motion.div>
               </div>
             )}
           </AnimatePresence>
-          <Chrome className="cursor-pointer text-gray-600" size={14} />
-          {showExtension && (
-            <div className="left-50% absolute top-4 z-10 h-fit w-fit translate-x-[-90%] transform rounded-lg border border-gray-200 bg-white p-2 text-black shadow-lg">
-              <div className="h-fit">
-                <div className="space-y-1.5 text-xs text-black">
-                  <div className="flex w-[250px] items-center gap-4 overflow-auto p-2">
-                    {screenshots.map((screenshot, idx) => (
-                      <ScreenshotItem
-                        key={idx}
-                        screenshot={screenshot}
-                        onScreenshotClick={handleScreenshotClick}
-                      />
-                    ))}
+          <PhotoIcon className="cursor-pointer text-gray-600 w-6 h-6" />
+          <AnimatePresence>
+            {showExtension && (
+              <motion.div
+                layout
+                transition={{
+                  type: "spring",
+                  bounce: 0.3,
+                  duration: 0.3,
+                }}
+                initial={{
+                  opacity: 0,
+                  filter: "blur(4px)",
+                  y: 5,
+                  scale: 0.97,
+                }}
+                animate={{
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  y: 0,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  filter: "blur(4px)",
+                  y: 5,
+                  scale: 0.97,
+                }}
+                className="left-50% absolute top-4 z-10 h-fit w-fit translate-x-[-90%] transform rounded-lg border border-gray-200 bg-white p-2 text-black shadow-lg"
+              >
+                <div className="h-fit">
+                  <div className="space-y-1.5 text-xs text-black">
+                    <div className="flex w-[250px] items-center gap-4 overflow-auto p-2">
+                      {screenshots.map((screenshot, idx) => (
+                        <ScreenshotItem
+                          key={idx}
+                          screenshot={screenshot}
+                          onScreenshotClick={handleScreenshotClick}
+                        />
+                      ))}
+                    </div>
+                    <p className="whitespace-nowrap px-2 py-1">
+                      {new Date().toLocaleString()}
+                    </p>
                   </div>
-                  <p className="whitespace-nowrap px-2 py-1">
-                    {new Date().toLocaleString()}
-                  </p>
                 </div>
-              </div>
-            </div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
