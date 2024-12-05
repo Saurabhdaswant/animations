@@ -38,8 +38,3 @@
 // - get the basic animation working
 // - work on details
 // - polish the ui
-
-// animations in our own app ?
-
-// - on click detail view we can shared layout animations
-// -

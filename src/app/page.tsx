@@ -5,6 +5,7 @@ import CalendarWidget from "@/components/CalendarWidget";
 import FamilyButton from "@/components/FamilyButton";
 import Transactions from "@/components/Transactions";
 import Timer from "@/components/Timer";
+import Screenshots from "@/components/Screenshots";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
           <TagsContainer />
           <Timer />
           <Transactions />
+          <Screenshots />
         </div>
       </main>
     </div>
