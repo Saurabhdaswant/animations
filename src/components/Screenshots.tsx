@@ -23,9 +23,8 @@ const ScreenshotItem = ({ screenshot, onScreenshotClick }: any) => {
     >
       <img
         src={screenshot}
-        style={{ borderRadius: "6px" }}
+        className="absolute inset-0 h-full w-full object-cover rounded-md"
         alt="Screenshot"
-        className="absolute inset-0 h-full w-full  object-cover"
       />
     </motion.span>
   );
@@ -53,7 +52,7 @@ export default function Screenshots() {
   };
 
   return (
-    <div className="mt-10 space-y-4">
+    <div className="mt-10  mb-52 space-y-4">
       <p className="font-[family-name:var(--font-open-runde-bold)]">
         Screenshots
       </p>
@@ -89,10 +88,9 @@ export default function Screenshots() {
                   className="absolute z-50 h-[80%] w-[80%] "
                 >
                   <img
-                    style={{ borderRadius: "6px" }}
+                    className="absolute inset-0 h-full w-full  object-cover rounded-md"
                     src={currentScreenshot}
                     alt="Screenshot"
-                    className="absolute inset-0 h-full w-full  object-contain"
                   />
                 </motion.div>
               </div>
@@ -126,7 +124,7 @@ export default function Screenshots() {
                   y: 5,
                   scale: 0.97,
                 }}
-                className="left-50% absolute top-4 z-10 h-fit w-fit translate-x-[-90%] transform rounded-lg border border-gray-200 bg-white p-2 text-black shadow-lg"
+                className="left-50% absolute top-7 z-10 h-fit w-fit translate-x-[-90%] transform rounded-lg border border-gray-200 bg-white p-2 text-black shadow-lg"
               >
                 <div className="h-fit">
                   <div className="space-y-1.5 text-xs text-black">
@@ -139,7 +137,7 @@ export default function Screenshots() {
                         />
                       ))}
                     </div>
-                    <p className="whitespace-nowrap px-2 py-1">
+                    <p className="whitespace-nowrap px-2 pb-1">
                       {new Date().toLocaleString()}
                     </p>
                   </div>
