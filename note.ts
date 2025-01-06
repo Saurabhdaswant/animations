@@ -26,7 +26,7 @@
 // transition :
 //  - second screens' text content go to left side
 //  - third screens's text content come from right side
-//  - green card now turns to a small green card at top (shared layout)
+//  - green card now turns to a small green card at top (shared layout231q
 
 // how i recreate animations
 

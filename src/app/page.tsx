@@ -6,6 +6,7 @@ import FamilyButton from "@/components/FamilyButton";
 import Transactions from "@/components/Transactions";
 import Timer from "@/components/Timer";
 import Screenshots from "@/components/Screenshots";
+import Wallet from "@/components/Wallet";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
           <Timer />
           <Transactions />
           <Screenshots />
+          <Wallet />
         </div>
       </main>
     </div>
