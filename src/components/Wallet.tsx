@@ -7,7 +7,7 @@ const FirstScreen = ({ cardData, setScreen }: any) => (
   <div className="h-full">
     <motion.div
       layoutId="green-card"
-      layout="position"
+      onClick={() => setScreen("second")}
       className="bg-[#57dc5c] rounded-[20px] p-4 text-white w-[75%] mt-20 rounded-b-none mx-auto h-36 "
     ></motion.div>
     <div className="p-8 pt-0 border-t border-[#E4E4E4] h-full shadow-[0_-10px_130.4px_10px_rgba(0,0,0,0.1)]">
@@ -25,36 +25,38 @@ const FirstScreen = ({ cardData, setScreen }: any) => (
       </div>
 
       <div className="flex flex-col gap-4">
-        {cardData.map((card: any, index: any) => (
-          <motion.div
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{
-              duration: 0.3,
-              delay: index * 0.1,
-            }}
-            key={index}
-            onClick={() => setScreen("second")}
-            className="bg-[#FBFBFD] flex items-center justify-between border border-[#F7F7F7] gap-3.5 rounded-[20px] p-4"
-          >
-            <div className="flex items-start gap-3">
-              <div className="bg-green-500 rounded-full w-fit p-2 flex items-center justify-center">
-                <CreditCardIcon className="text-white w-5 h-5" />
+        <AnimatePresence mode="wait">
+          {cardData.map((card: any, index: any) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+              }}
+              key={index}
+              onClick={() => setScreen("second")}
+              className="bg-[#FBFBFD] flex items-center justify-between border border-[#F7F7F7] gap-3.5 rounded-[20px] p-4"
+            >
+              <div className="flex items-start gap-3">
+                <div className="bg-green-500 rounded-full w-fit p-2 flex items-center justify-center">
+                  <CreditCardIcon className="text-white w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-[#25242B]">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-[#A3A2A4]">{card.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base font-semibold text-[#25242B]">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-[#A3A2A4]">{card.description}</p>
+              <div className="-mr-1.5">
+                <EllipsisVertical className="text-[#A3A2A4] w-5 h-5" />
               </div>
-            </div>
-            <div className="-mr-1.5">
-              <EllipsisVertical className="text-[#A3A2A4] w-5 h-5" />
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   </div>
@@ -77,8 +79,7 @@ const SecondScreen = ({ setScreen }: any) => (
       </div>
       <motion.div
         layoutId="green-card"
-        layout="position"
-        onClick={() => setScreen("first")}
+        onClick={() => setScreen("third")}
         className="bg-[#57dc5c] mt-10 rounded-[20px] p-4 text-white w-[90%] mx-auto h-[13rem]"
       ></motion.div>
 
@@ -110,7 +111,7 @@ const ThirdScreen = ({ setScreen }: any) => (
   <div className="h-full p-8">
     <motion.div
       layoutId="green-card"
-      layout="position"
+      onClick={() => setScreen("first")}
       className="bg-[#d5f7de] -mt-4 rounded-lg p-4 text-white w-5 h-5 mx-auto"
     ></motion.div>
 
