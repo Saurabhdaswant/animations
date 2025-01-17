@@ -25,11 +25,9 @@ const Wallet = () => {
 
   return (
     <div className="mt-10 space-y-4 relative">
-      <p className="font-[family-name:var(--font-open-runde-bold)]">
-        Transactions
-      </p>
+      <p className="font-[family-name:var(--font-open-runde-bold)]">Wallet</p>
 
-      <div className="rounded-xl absolute -mr-20 pb-10 gap-2 border border-solid border-black/[.08] transition-colors flex items-center justify-center hover:border-transparent text-sm sm:text-base px-4">
+      <div className="rounded-xl border border-solid border-black/[.08] transition-colors flex items-center justify-center bg-white hover:border-transparent text-sm sm:text-base py-10 px-4">
         <div className="flex relative items-center h-[750px] justify-center gap-4 w-96 bg-white border border-slate-100 rounded-3xl shadow-lg overflow-hidden space-y-4">
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col h-full justify-end">
@@ -37,10 +35,14 @@ const Wallet = () => {
                 {screen === "first" && (
                   <>
                     <motion.div
+                      transition={{
+                        duration: 0.29,
+                        ease: [0.25, 1, 0.5, 1],
+                      }}
                       layoutId="green-card"
                       onClick={() => setScreen("second")}
-                      style={{ borderRadius: "20px" }}
-                      className="bg-[#57dc5c] cursor-pointer  p-4 text-white w-[75%] -mb-20 rounded-b-none mx-auto h-40"
+                      style={{ borderRadius: "20px", background: "#57dc5c" }}
+                      className="bg-green-60 cursor-pointer  p-4 text-white w-[75%] -mb-10 rounded-b-none mx-auto h-40"
                     ></motion.div>
                     <motion.div
                       layout
@@ -110,6 +112,7 @@ const Wallet = () => {
                 <div className="mt-36">
                   <div key={screen} className="p-8">
                     <motion.h2
+                      layout
                       initial={{ opacity: 0, y: 10, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{
@@ -119,19 +122,28 @@ const Wallet = () => {
                       transition={{
                         duration: 0.3,
                       }}
-                      className={`mt-11 text-[#1E1E1E] font-semibold text-xl `}
+                      className={`mt-11 ${
+                        screen !== "second"
+                          ? "text-transparent"
+                          : "text-[#1E1E1E]"
+                      } font-semibold text-xl `}
                     >
                       Import Wallet
                     </motion.h2>
 
                     <motion.p
+                      layout
                       initial={{ opacity: 0, y: 10, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 0 }}
                       transition={{
                         duration: 0.3,
                       }}
-                      className={`text-[#A6A6A6] mt-1.5 `}
+                      className={`${
+                        screen !== "second"
+                          ? "text-transparent"
+                          : "text-[#A6A6A6]"
+                      } mt-1.5 `}
                     >
                       Enter your Secret Recovery Phrase to import your wallet
                       securely.
@@ -140,37 +152,69 @@ const Wallet = () => {
                   {screen === "second" && (
                     <motion.div
                       layoutId="green-card"
+                      transition={{
+                        duration: 0.29,
+                        ease: [0.25, 1, 0.5, 1],
+                      }}
                       onClick={() => setScreen("first")}
-                      className="bg-[#57dc5c] cursor-pointer mt-10 p-4 text-white w-[90%] mx-auto h-[13rem]"
-                      style={{ borderRadius: "20px" }}
+                      className={`bg-green-60 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem] `}
+                      style={{ borderRadius: "20px", background: "#57dc5c" }}
                     ></motion.div>
                   )}
 
-                  <motion.div
-                    className="flex items-center mt-6 justify-center space-x-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="flex-1 border-b border-gray-100"></div>
+                  {screen === "second" && (
+                    <motion.div
+                      className="flex items-center mt-4 justify-center  px-12 gap-2 space-x-2"
+                      layout
+                      initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{
+                        opacity: 0,
+                        y: 0,
+                      }}
+                      transition={{
+                        duration: 0.3,
+                      }}
+                    >
+                      <div className="flex-1 border-b border-gray-100/80  "></div>
 
-                    <button className="inline-flex items-center gap-2 text-sm font-medium text-[#A6A6A6]">
-                      <PencilIcon className="w-4 h-4" />
-                      Input Manually
-                    </button>
+                      <button className="inline-flex items-center gap-2 text-[13px] font-medium text-[#A6A6A6]">
+                        <PencilIcon className="w-3.5 h-3.5" />
+                        Input Manually
+                      </button>
 
-                    <div className="flex-1 border-b border-gray-100"></div>
-                  </motion.div>
+                      <div className="flex-1 border-b border-gray-100/80 "></div>
+                    </motion.div>
+                  )}
                 </div>
 
                 <div>
-                  <div className="mt-10 mb-5 p-4 border-2 border-dashed border-gray-100 mx-auto w-[90%] rounded-3xl">
-                    <p className="text-[#A6A6A6] text-xs text-center">
-                      After entering your Secret Recovery Phrase, you’ll be able
-                      to continue the importing process.
-                    </p>
+                  <div className="mt-10 mb-5 p-4 border-t-2 border-dashed border-gray-100 mx-auto w-[90%] rounded-3xl">
+                    {screen === "second" ? (
+                      <motion.p
+                        className="text-[#A6A6A6] text-xs text-center"
+                        layout
+                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{
+                          duration: 0.3,
+                        }}
+                        exit={{
+                          opacity: 0,
+                          y: 0,
+                        }}
+                      >
+                        After entering your Secret Recovery Phrase, you’ll be
+                        able to continue the importing process.
+                      </motion.p>
+                    ) : (
+                      <p className="text-transparent text-xs text-center">
+                        nonses importing proc importing procimporting
+                        procimporting proc
+                      </p>
+                    )}
                   </div>
-                  <div className="bg-[#57dc5c] opacity-0 mt-5 rounded-full p-4 text-white w-[90%] mx-auto h-10"></div>
+                  <div className="bg-green-60 opacity-0 mt-5 rounded-full p-4 text-white w-[90%] mx-auto h-10"></div>
                 </div>
               </>
             </div>
