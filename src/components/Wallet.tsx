@@ -28,8 +28,12 @@ const Wallet = () => {
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 30 }}
-      transition={{ duration: 0.15 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+      whileTap={{
+        scale: 0.95,
+        background: "#F4F4F6",
+      }}
       key={index}
       onClick={() => setScreen("second")}
       className="bg-[#FBFBFD] cursor-pointer flex items-center justify-between border border-[#F7F7F7] gap-3.5 rounded-[20px] p-4"
@@ -62,7 +66,7 @@ const Wallet = () => {
                 {screen === "first" && (
                   <>
                     <motion.div
-                      transition={{ duration: 0.29, ease: [0.25, 1, 0.5, 1] }}
+                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                       layoutId="green-card"
                       onClick={() => setScreen("second")}
                       style={{ borderRadius: "20px", background: "#57dc5c" }}
@@ -72,12 +76,11 @@ const Wallet = () => {
                       layout
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ opacity: 0, y: 20, color: "transparent" }}
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                       className="p-8 pt-0 absolute z-50 border-t border-[#E4E4E4] bg-white h-[500px] shadow-[0_-10px_130.4px_10px_rgba(0,0,0,0.1)]"
                     >
                       <motion.div
-                        transition={{ duration: 0.15 }}
                         exit={{ opacity: 0, y: 30 }}
                         className="flex flex-col my-9 items-center"
                       >
@@ -132,7 +135,7 @@ const Wallet = () => {
                   <>
                     <motion.div
                       layoutId="green-card"
-                      transition={{ duration: 0.29, ease: [0.25, 1, 0.5, 1] }}
+                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                       onClick={() => setScreen("first")}
                       className="bg-green-60 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
                       style={{ borderRadius: "20px", background: "#57dc5c" }}
