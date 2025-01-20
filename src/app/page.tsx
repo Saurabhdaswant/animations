@@ -8,6 +8,7 @@ import Timer from "@/components/Timer";
 import Screenshots from "@/components/Screenshots";
 import Wallet from "@/components/Wallet";
 import Wallet2 from "@/components/Wallet2";
+import WalletM from "@/components/WalletM";
 
 export default function Home() {
   return (
@@ -36,8 +37,9 @@ export default function Home() {
           <Timer />
           <Transactions />
           <Screenshots />
-          {/* <Wallet />
-          <Wallet2 /> */}
+          {/* <WalletM /> */}
+          {/* <Wallet /> */}
+          {/*  <Wallet2 /> */}
         </div>
       </main>
     </div>

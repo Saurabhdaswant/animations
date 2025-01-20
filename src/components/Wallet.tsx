@@ -5,7 +5,7 @@ import { EllipsisVertical } from "lucide-react";
 
 const Wallet = () => {
   const [screen, setScreen] = React.useState<"first" | "second" | "third">(
-    "second"
+    "first"
   );
 
   const cardData = [
@@ -62,6 +62,15 @@ const Wallet = () => {
         <div className="flex relative items-center h-[750px] justify-center gap-4 w-96 bg-white border border-slate-100 rounded-3xl shadow-lg overflow-hidden space-y-4">
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col h-full justify-end">
+              {/* {screen === "third" && (
+                <motion.div
+                  layoutId="green-card"
+                  onClick={() => setScreen("second")}
+                  transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                  style={{ borderRadius: "8px", background: "#57dc5c" }}
+                  className="bg-[#d5f7de] -mt-4 rounded-lg p-4 text-white w-5 h-5 mx-auto"
+                />
+              )} */}
               <AnimatePresence mode="wait">
                 {screen === "first" && (
                   <>
@@ -70,7 +79,7 @@ const Wallet = () => {
                       layoutId="green-card"
                       onClick={() => setScreen("second")}
                       style={{ borderRadius: "20px", background: "#57dc5c" }}
-                      className="bg-green-60 cursor-pointer p-4 text-white w-[75%] -mb-10 rounded-b-none mx-auto h-40"
+                      className="bg-green-60 cursor-pointer p-4 text-white w-[75%] mb-40 rounded-b-none mx-auto h-40"
                     />
                     <motion.div
                       layout
@@ -100,38 +109,58 @@ const Wallet = () => {
                 )}
               </AnimatePresence>
               <div className="mt-36">
-                <div key={screen} className="p-8">
-                  <motion.h2
-                    layout
-                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={`mt-11 ${
-                      screen !== "second"
-                        ? "text-transparent"
-                        : "text-[#1E1E1E]"
-                    } font-semibold text-xl`}
-                  >
-                    Import Wallet
-                  </motion.h2>
-                  <motion.p
-                    layout
-                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={`${
-                      screen !== "second"
-                        ? "text-transparent"
-                        : "text-[#A6A6A6]"
-                    } mt-1.5`}
-                  >
-                    Enter your Secret Recovery Phrase to import your wallet
-                    securely.
-                  </motion.p>
-                </div>
-                {screen === "second" && (
+                {(screen === "second" || screen === "third") && (
+                  <div className="p-8">
+                    <AnimatePresence mode="wait">
+                      {screen === "second" ? (
+                        <motion.div key="second1">
+                          <motion.h2
+                            initial={{ opacity: 0, y: 10, x: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 0, x: -100 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-11 text-[#1E1E1E] font-semibold text-xl"
+                          >
+                            Import Wallet
+                          </motion.h2>
+                          <motion.p
+                            initial={{ opacity: 0, y: 10, x: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 0, x: -100 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-[#A6A6A6] mt-1.5"
+                          >
+                            Enter your Secret Recovery Phrase to import your
+                            wallet securely.
+                          </motion.p>
+                        </motion.div>
+                      ) : screen === "third" ? (
+                        <motion.div key="second2">
+                          <motion.h2
+                            initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 0, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-11 text-[#1E1E1E] font-semibold text-xl"
+                          >
+                            Wallet Imported
+                          </motion.h2>
+                          <motion.p
+                            initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 0, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-[#A6A6A6] mt-1.5"
+                          >
+                            Your wallet has been successfully imported.
+                          </motion.p>
+                        </motion.div>
+                      ) : null}
+                    </AnimatePresence>
+                  </div>
+                )}
+
+                {(screen === "second" || screen === "third") && (
                   <>
                     <motion.div
                       layoutId="green-card"
@@ -147,6 +176,7 @@ const Wallet = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 0 }}
                       transition={{ duration: 0.3 }}
+                      onClick={() => setScreen("third")}
                     >
                       <div className="flex-1 border-b border-gray-100/80" />
                       <button className="inline-flex items-center gap-2 text-[13px] font-medium text-[#A6A6A6]">
