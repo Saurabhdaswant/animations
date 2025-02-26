@@ -160,15 +160,56 @@ const Wallet = () => {
                   </div>
                 )}
 
-                {(screen === "second" || screen === "third") && (
-                  <>
+                {screen === "third" && (
+                  <div className="absolute flex items-center justify-center w-full  top-4">
                     <motion.div
                       layoutId="green-card"
-                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                      transition={{
+                        duration: 0.35,
+                        ease: [0.25, 1, 0.5, 1],
+                      }}
                       onClick={() => setScreen("first")}
-                      className="bg-green-60 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
-                      style={{ borderRadius: "20px", background: "#57dc5c" }}
+                      className="  bg-green-60 cursor-pointer mt-8 p-4 text-white w-5 mx-auto h-5"
+                      style={{
+                        borderRadius: "4px",
+                        background: "#57dc5c",
+                      }}
                     />
+                  </div>
+                )}
+
+                {(screen === "second" || screen === "third") && (
+                  <>
+                    <div className="h-[12rem]">
+                      {screen === "second" && (
+                        <motion.div
+                          layoutId="green-card"
+                          transition={{
+                            duration: 0.35,
+                            ease: [0.25, 1, 0.5, 1],
+                          }}
+                          onClick={() => setScreen("first")}
+                          className="bg-green-60 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
+                          style={{
+                            borderRadius: "20px",
+                            background: "#57dc5c",
+                          }}
+                        />
+                      )}
+                      {screen === "third" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                          animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 0, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.3 }}
+                          onClick={() => setScreen("first")}
+                          className="bg-gray-200 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-14"
+                          style={{
+                            borderRadius: "20px",
+                          }}
+                        />
+                      )}
+                    </div>
                     <motion.div
                       className="flex items-center mt-4 justify-center px-12 gap-2 space-x-2"
                       layout
