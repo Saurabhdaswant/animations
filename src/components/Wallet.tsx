@@ -170,7 +170,7 @@ const Wallet = () => {
                   <div className="absolute flex items-center justify-center w-full  top-4">
                     <motion.div
                       layoutId="green-card"
-                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                       onClick={() => setScreen("first")}
                       className=" cursor-pointer mt-8  text-white w-8 mx-auto h-5 flex items-center justify-center"
                       style={{
@@ -197,7 +197,7 @@ const Wallet = () => {
                           <motion.div
                             layoutId="green-card"
                             transition={{
-                              duration: 0.35,
+                              duration: 0.4,
                               ease: [0.25, 1, 0.5, 1],
                             }}
                             onClick={() => setScreen("first")}
