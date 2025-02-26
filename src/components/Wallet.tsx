@@ -106,7 +106,7 @@ const Wallet = () => {
               <div className="mt-36 real">
                 {(screen === "second" || screen === "third") && (
                   <div className="p-8">
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="popLayout">
                       {screen === "second" ? (
                         <motion.div
                           key="second1"
@@ -133,24 +133,32 @@ const Wallet = () => {
                           </motion.p>
                         </motion.div>
                       ) : screen === "third" ? (
-                        <motion.div key="second2" className=" absolute top-16">
+                        <motion.div
+                          key="second2"
+                          className=" absolute top-16 w-full "
+                        >
                           <motion.h2
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 0, x: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{
+                              duration: 0.3,
+                            }}
                             className="mt-11 text-[#1E1E1E] font-semibold text-xl"
                           >
-                            Wallet Imported
+                            Enter Your Phrase
                           </motion.h2>
                           <motion.p
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 0, x: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-[#A6A6A6] mt-1.5"
+                            transition={{
+                              duration: 0.3,
+                            }}
+                            className="text-[#A6A6A6] mt-1.5 max-w-[80%] leading-5"
                           >
-                            Your wallet has been successfully imported.
+                            Enter your Secret Recovery Phrase in its exact order
+                            , from 1 - 12{" "}
                           </motion.p>
                         </motion.div>
                       ) : null}
@@ -162,10 +170,7 @@ const Wallet = () => {
                   <div className="absolute flex items-center justify-center w-full  top-4">
                     <motion.div
                       layoutId="green-card"
-                      transition={{
-                        duration: 0.35,
-                        ease: [0.25, 1, 0.5, 1],
-                      }}
+                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                       onClick={() => setScreen("first")}
                       className=" cursor-pointer mt-8  text-white w-8 mx-auto h-5 flex items-center justify-center"
                       style={{
@@ -205,18 +210,21 @@ const Wallet = () => {
                         </div>
                       )}
                       {screen === "third" && (
-                        <div className="absolute -top-32 w-full">
+                        <div className="absolute -top-32 px-4 w-full">
                           <motion.div
+                            className="bg-white rounded-[22px] w-full mt-8 shadow-2xl p-1.5"
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 0, x: 0 }}
-                            transition={{ duration: 0.3, delay: 0.3 }}
-                            onClick={() => setScreen("second")}
-                            className="bg-gray-100  border-white border-4 shadow-2xl  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-14"
-                            style={{
-                              borderRadius: "20px",
+                            transition={{
+                              duration: 0.3,
                             }}
-                          />
+                          >
+                            <motion.div
+                              onClick={() => setScreen("second")}
+                              className="bg-gray-100 rounded-2xl border-gray-200 border border-dotted h-14 cursor-pointer text-white w-full mx-auto"
+                            />
+                          </motion.div>
                         </div>
                       )}
                     </div>
