@@ -62,15 +62,6 @@ const Wallet = () => {
         <div className="flex relative items-center h-[750px] justify-center gap-4 w-96 bg-white border border-slate-100 rounded-3xl shadow-lg overflow-hidden space-y-4">
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col h-full justify-end">
-              {/* {screen === "third" && (
-                <motion.div
-                  layoutId="green-card"
-                  onClick={() => setScreen("second")}
-                  transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-                  style={{ borderRadius: "8px", background: "#57dc5c" }}
-                  className="bg-[#d5f7de] -mt-4 rounded-lg p-4 text-white w-5 h-5 mx-auto"
-                />
-              )} */}
               <AnimatePresence mode="wait">
                 {screen === "first" && (
                   <>
@@ -108,18 +99,18 @@ const Wallet = () => {
                   </>
                 )}
               </AnimatePresence>
-              <div className="mt-36">
+              <div className="mt-36 real">
                 {(screen === "second" || screen === "third") && (
                   <div className="p-8">
                     <AnimatePresence mode="wait">
                       {screen === "second" ? (
-                        <motion.div key="second1">
+                        <motion.div key="second1" className=" absolute top-20">
                           <motion.h2
                             initial={{ opacity: 0, y: 10, x: 0, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 0, x: -100 }}
                             transition={{ duration: 0.3 }}
-                            className="mt-11 text-[#1E1E1E] font-semibold text-xl"
+                            className="  text-[#1E1E1E] font-semibold text-xl"
                           >
                             Import Wallet
                           </motion.h2>
@@ -135,7 +126,7 @@ const Wallet = () => {
                           </motion.p>
                         </motion.div>
                       ) : screen === "third" ? (
-                        <motion.div key="second2">
+                        <motion.div key="second2" className=" absolute top-20">
                           <motion.h2
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
@@ -180,52 +171,58 @@ const Wallet = () => {
 
                 {(screen === "second" || screen === "third") && (
                   <>
-                    <div className="h-[12rem]">
+                    <div className="h-[12rem] relative">
                       {screen === "second" && (
-                        <motion.div
-                          layoutId="green-card"
-                          transition={{
-                            duration: 0.35,
-                            ease: [0.25, 1, 0.5, 1],
-                          }}
-                          onClick={() => setScreen("first")}
-                          className="bg-green-60 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
-                          style={{
-                            borderRadius: "20px",
-                            background: "#57dc5c",
-                          }}
-                        />
+                        <div className=" absolute -top-40 w-full">
+                          <motion.div
+                            layoutId="green-card"
+                            transition={{
+                              duration: 0.35,
+                              ease: [0.25, 1, 0.5, 1],
+                            }}
+                            onClick={() => setScreen("first")}
+                            className="bg-green-60  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
+                            style={{
+                              borderRadius: "20px",
+                              background: "#57dc5c",
+                            }}
+                          />
+                        </div>
                       )}
                       {screen === "third" && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
-                          animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 0, x: 0 }}
-                          transition={{ duration: 0.3, delay: 0.3 }}
-                          onClick={() => setScreen("first")}
-                          className="bg-gray-200 cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-14"
-                          style={{
-                            borderRadius: "20px",
-                          }}
-                        />
+                        <div className="absolute -top-32 w-full">
+                          <motion.div
+                            initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 0, x: 0 }}
+                            transition={{ duration: 0.3, delay: 0.3 }}
+                            onClick={() => setScreen("first")}
+                            className="bg-gray-100  border-white border-4 shadow-2xl  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-14"
+                            style={{
+                              borderRadius: "20px",
+                            }}
+                          />
+                        </div>
                       )}
                     </div>
-                    <motion.div
-                      className="flex items-center mt-4 justify-center px-12 gap-2 space-x-2"
-                      layout
-                      initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      onClick={() => setScreen("third")}
-                    >
-                      <div className="flex-1 border-b border-gray-100/80" />
-                      <button className="inline-flex items-center gap-2 text-[13px] font-medium text-[#A6A6A6]">
-                        <PencilIcon className="w-3.5 h-3.5" />
-                        Input Manually
-                      </button>
-                      <div className="flex-1 border-b border-gray-100/80" />
-                    </motion.div>
+                    {screen === "second" && (
+                      <motion.div
+                        className="flex items-center mt-4 justify-center px-12 gap-2 space-x-2"
+                        layout
+                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={() => setScreen("third")}
+                      >
+                        <div className="flex-1 border-b border-gray-100/80" />
+                        <button className="inline-flex items-center gap-2 text-[13px] font-medium text-[#A6A6A6]">
+                          <PencilIcon className="w-3.5 h-3.5" />
+                          Input Manually
+                        </button>
+                        <div className="flex-1 border-b border-gray-100/80" />
+                      </motion.div>
+                    )}
                   </>
                 )}
               </div>
