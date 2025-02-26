@@ -1,5 +1,9 @@
 import React from "react";
-import { CreditCardIcon, PencilIcon } from "@heroicons/react/16/solid";
+import {
+  CreditCardIcon,
+  LockClosedIcon,
+  PencilIcon,
+} from "@heroicons/react/16/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { EllipsisVertical } from "lucide-react";
 
@@ -104,7 +108,10 @@ const Wallet = () => {
                   <div className="p-8">
                     <AnimatePresence mode="wait">
                       {screen === "second" ? (
-                        <motion.div key="second1" className=" absolute top-20">
+                        <motion.div
+                          key="second1"
+                          className=" absolute top-[108px]"
+                        >
                           <motion.h2
                             initial={{ opacity: 0, y: 10, x: 0, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
@@ -126,7 +133,7 @@ const Wallet = () => {
                           </motion.p>
                         </motion.div>
                       ) : screen === "third" ? (
-                        <motion.div key="second2" className=" absolute top-20">
+                        <motion.div key="second2" className=" absolute top-16">
                           <motion.h2
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
@@ -160,12 +167,20 @@ const Wallet = () => {
                         ease: [0.25, 1, 0.5, 1],
                       }}
                       onClick={() => setScreen("first")}
-                      className="  bg-green-60 cursor-pointer mt-8 p-4 text-white w-5 mx-auto h-5"
+                      className=" cursor-pointer mt-8  text-white w-8 mx-auto h-5 flex items-center justify-center"
                       style={{
                         borderRadius: "4px",
-                        background: "#57dc5c",
+                        background: "#E0F6E6",
                       }}
-                    />
+                    >
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.08 }}
+                      >
+                        <LockClosedIcon className="w-3 h-3 text-[#5ECD64]" />
+                      </motion.div>
+                    </motion.div>
                   </div>
                 )}
 
@@ -196,7 +211,7 @@ const Wallet = () => {
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 0, x: 0 }}
                             transition={{ duration: 0.3, delay: 0.3 }}
-                            onClick={() => setScreen("first")}
+                            onClick={() => setScreen("second")}
                             className="bg-gray-100  border-white border-4 shadow-2xl  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-14"
                             style={{
                               borderRadius: "20px",
