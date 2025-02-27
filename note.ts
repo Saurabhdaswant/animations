@@ -42,17 +42,10 @@
 // i got it right i got it right!!!!!! i fucking did it!!!!!
 
 // what is left now ?
-// - icon color lighter on the main card
 // - main card decoration
 // --- one circle and one line
 // --- one circle with arrow icon on top right outside
-// - first page : back and question icon
-// - second page : shift stuff above and need more space in bottom
 // - second page : need icon above bottom description and a button below that
 // - second card decoration
-// - back button on second screen and third screen
-// - third card needs a icon button
-// - fix the copy for the third screen
-// - style the third input properly
-// --- needs thick border and padding and placeholder
+// - back and question button on all screens
 // bottom description and button on third screen

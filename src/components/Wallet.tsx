@@ -54,7 +54,7 @@ const Wallet = () => {
         </div>
       </div>
       <div className="-mr-1.5">
-        <EllipsisVertical className="text-[#A3A2A4] w-5 h-5" />
+        <EllipsisVertical className="text-[#a3a2a465] w-5 h-5" />
       </div>
     </motion.div>
   );
@@ -65,7 +65,7 @@ const Wallet = () => {
       <div className="rounded-xl border border-solid border-black/[.08] transition-colors flex items-center justify-center bg-white hover:border-transparent text-sm sm:text-base py-10 px-4">
         <div className="flex relative items-center h-[750px] justify-center gap-4 w-96 bg-white border border-slate-100 rounded-3xl shadow-lg overflow-hidden space-y-4">
           <div className="h-full flex flex-col justify-between">
-            <div className="flex flex-col h-full justify-end">
+            <div className="flex flex-col  h-full justify-end">
               <AnimatePresence mode="wait">
                 {screen === "first" && (
                   <>
@@ -103,7 +103,7 @@ const Wallet = () => {
                   </>
                 )}
               </AnimatePresence>
-              <div className="mt-36 real">
+              <div className="mt-36 px-4 real">
                 {(screen === "second" || screen === "third") && (
                   <div className="p-8">
                     <AnimatePresence mode="popLayout">
@@ -155,7 +155,7 @@ const Wallet = () => {
                             transition={{
                               duration: 0.3,
                             }}
-                            className="text-[#A6A6A6] mt-1.5 max-w-[80%] leading-5"
+                            className="text-[#A6A6A6] mt-2 max-w-[80%] leading-5"
                           >
                             Enter your Secret Recovery Phrase in its exact order
                             , from 1 - 12{" "}
@@ -193,7 +193,7 @@ const Wallet = () => {
                   <>
                     <div className="h-[12rem] relative">
                       {screen === "second" && (
-                        <div className=" absolute -top-40 w-full">
+                        <div className=" absolute -top-32 w-full">
                           <motion.div
                             layoutId="green-card"
                             transition={{
@@ -210,21 +210,23 @@ const Wallet = () => {
                         </div>
                       )}
                       {screen === "third" && (
-                        <div className="absolute -top-32 px-4 w-full">
-                          <motion.div
-                            className="bg-white rounded-[22px] w-full mt-8 shadow-2xl p-1.5"
-                            initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: 0 }}
-                            transition={{
-                              duration: 0.3,
-                            }}
-                          >
+                        <div className="absolute -top-40 px-4 w-full">
+                          {[...Array(3)].map((_, index) => (
                             <motion.div
-                              onClick={() => setScreen("second")}
-                              className="bg-gray-100 rounded-2xl border-gray-200 border border-dotted h-14 cursor-pointer text-white w-full mx-auto"
-                            />
-                          </motion.div>
+                              className="bg-white rounded-[18px] w-full mt-8 shadow-2xl p-1.5"
+                              initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                              animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 0, x: 0 }}
+                              transition={{
+                                duration: 0.3,
+                              }}
+                            >
+                              <motion.div
+                                onClick={() => setScreen("second")}
+                                className="bg-gray-100 rounded-xl border-gray-200 border border-dotted h-14 cursor-pointer text-white w-full mx-auto"
+                              />
+                            </motion.div>
+                          ))}
                         </div>
                       )}
                     </div>
