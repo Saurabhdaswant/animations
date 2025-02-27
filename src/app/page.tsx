@@ -37,7 +37,7 @@ export default function Home() {
           <Timer />
           <Transactions />
           <Screenshots />
-          <Wallet />
+          {/* <Wallet /> */}
         </div>
       </main>
     </div>
