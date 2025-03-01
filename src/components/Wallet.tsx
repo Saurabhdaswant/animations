@@ -69,7 +69,7 @@ const Wallet = () => {
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col  h-full justify-end">
               <AnimatePresence mode="wait">
-                <div className="flex absolute z-10 top-10 w-full px-4 justify-between items-center mb-4">
+                <div className="flex absolute  z-10 top-12 w-full px-4 justify-between items-center mb-4">
                   <button
                     className="cursor-pointer text-[#A6A6A6] disabled:opacity-50 disabled:cursor-not-allowed"
                     onClick={() => {
@@ -125,11 +125,11 @@ const Wallet = () => {
                   </>
                 )}
               </AnimatePresence>
-              <div className="mt-36 px-4 real">
+              <div className="mt-36 px-4 ">
                 {(screen === "second" || screen === "third") && (
                   <div className="p-8">
-                    <AnimatePresence mode="popLayout">
-                      {screen === "second" ? (
+                    <AnimatePresence mode="sync">
+                      {screen === "second" && (
                         <motion.div
                           key="second1"
                           className=" absolute top-[108px]"
@@ -154,7 +154,8 @@ const Wallet = () => {
                             wallet securely.
                           </motion.p>
                         </motion.div>
-                      ) : screen === "third" ? (
+                      )}
+                      {screen === "third" && (
                         <motion.div
                           key="second2"
                           className=" absolute top-16 w-full "
@@ -162,7 +163,7 @@ const Wallet = () => {
                           <motion.h2
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: 0 }}
+                            exit={{ opacity: 0, y: 0, x: 100 }}
                             transition={{
                               duration: 0.3,
                             }}
@@ -173,7 +174,7 @@ const Wallet = () => {
                           <motion.p
                             initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: 0 }}
+                            exit={{ opacity: 0, y: 0, x: 100 }}
                             transition={{
                               duration: 0.3,
                             }}
@@ -183,18 +184,18 @@ const Wallet = () => {
                             , from 1 - 12{" "}
                           </motion.p>
                         </motion.div>
-                      ) : null}
+                      )}
                     </AnimatePresence>
                   </div>
                 )}
 
                 {screen === "third" && (
-                  <div className="absolute flex items-center justify-center w-full  top-4">
+                  <div className="absolute pr-5  flex items-center  justify-center w-full  top-4">
                     <motion.div
                       layoutId="green-card"
                       transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                       onClick={() => setScreen("first")}
-                      className=" cursor-pointer mt-8  text-white w-8 mx-auto h-5 flex items-center justify-center"
+                      className=" cursor-pointer mt-8   text-white w-8 mx-auto  h-5 flex items-center justify-center"
                       style={{
                         borderRadius: "4px",
                         background: "#E0F6E6",
