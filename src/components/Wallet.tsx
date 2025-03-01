@@ -228,7 +228,7 @@ const Wallet = () => {
                       )}
                       {screen === "third" && (
                         <div className="absolute -top-40 px-4 w-full">
-                          {[...Array(3)].map((_, index) => (
+                          {[...Array(1)].map((_, index) => (
                             <motion.div
                               className="bg-white rounded-[18px] w-full mt-8 shadow-2xl p-1.5"
                               initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
@@ -250,8 +250,14 @@ const Wallet = () => {
                   </>
                 )}
               </div>
-              <div>
-                <div className=" relative mt-10 opacity-50 mb-5 p-4 pt-5 border-t-2 border-dashed border-gray-200 mx-auto w-[90%] rounded-3xl">
+              <div className=" ">
+                <div
+                  className={` min-w-96  relative mt-10 opacity-50 mb-5 p-4 pt-5 ${
+                    screen === "third"
+                      ? ""
+                      : "border-t-2 border-dashed border-gray-200"
+                  } mx-auto w-[70%] rounded-3xl`}
+                >
                   {screen === "second" ? (
                     <>
                       <ShieldCheckIcon
@@ -267,7 +273,7 @@ const Wallet = () => {
                         transition={{ duration: 0.3 }}
                         exit={{ opacity: 0, y: 0 }}
                       >
-                        After entering your Secret Recovery Phrase, you’ll be
+                        After entering your Secret Recovery Phrase, you'll be
                         able to continue the importing process.
                       </motion.p>
 
@@ -281,14 +287,36 @@ const Wallet = () => {
                         Import
                       </motion.button>
                     </>
-                  ) : (
+                  ) : screen === "first" ? (
                     <p className="text-transparent text-xs text-center">
                       nonses importing proc importing procimporting
                       procimporting proc
                     </p>
+                  ) : (
+                    <>
+                      <motion.p
+                        className="text-[#A6A6A6] text-xs  text-center"
+                        layout
+                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                        exit={{ opacity: 0, y: 0 }}
+                      >
+                        Enter first word to continue{" "}
+                      </motion.p>
+
+                      <motion.button
+                        disabled={true}
+                        className="bg-green-500  w-full rounded-full text-white font-semibold py-2.5 px-4  mt-6"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        Continue
+                      </motion.button>
+                    </>
                   )}
                 </div>
-                {/* <div className="bg-green-60 opacity-0 mt-5 rounded-full p-4 text-white w-[90%] mx-auto h-10" /> */}
               </div>
             </div>
           </div>

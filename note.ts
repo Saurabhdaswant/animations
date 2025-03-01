@@ -45,7 +45,5 @@
 // - main card decoration
 // --- one circle and one line
 // --- one circle with arrow icon on top right outside
-// - second page : need icon above bottom description and a button below that
-// - second card decoration
+// second card decoration
 // - back and question button on all screens
-// bottom description and button on third screen
