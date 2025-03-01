@@ -45,7 +45,7 @@ const Wallet = () => {
       className="bg-[#FBFBFD] cursor-pointer flex items-center justify-between border border-[#F7F7F7] gap-3.5 rounded-[20px] p-4"
     >
       <div className="flex items-start gap-3">
-        <div className="bg-green-500 rounded-full w-fit p-2 flex items-center justify-center">
+        <div className="bg-[#54B7F9] rounded-full w-fit p-2 flex items-center justify-center">
           <CreditCardIcon className="text-white w-5 h-5" />
         </div>
         <div>
@@ -95,7 +95,7 @@ const Wallet = () => {
                       transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                       layoutId="green-card"
                       onClick={() => setScreen("second")}
-                      style={{ borderRadius: "20px", background: "#57dc5c" }}
+                      style={{ borderRadius: "20px", background: "#54B7F9" }}
                       className="bg-green-60 cursor-pointer p-4 text-white w-[75%] mb-40 rounded-b-none mx-auto h-40"
                     />
                     <motion.div
@@ -201,10 +201,9 @@ const Wallet = () => {
                     <motion.div
                       layoutId="green-card"
                       transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-                      className="  mt-8   text-white w-8 mx-auto  h-5 flex items-center justify-center"
+                      className="  mt-8   text-white w-8 mx-auto bg-opacity-30 bg-[#54B7F9]  h-5 flex items-center justify-center"
                       style={{
                         borderRadius: "4px",
-                        background: "#E0F6E6",
                       }}
                     >
                       <motion.div
@@ -212,7 +211,7 @@ const Wallet = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.08 }}
                       >
-                        <LockClosedIcon className="w-3 h-3 text-[#5ECD64]" />
+                        <LockClosedIcon className="w-3 h-3 text-[#54B7F9]" />
                       </motion.div>
                     </motion.div>
                   </div>
@@ -233,7 +232,7 @@ const Wallet = () => {
                             className="bg-green-60  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
                             style={{
                               borderRadius: "20px",
-                              background: "#57dc5c",
+                              background: "#54B7F9",
                             }}
                           />
                           <motion.div
@@ -304,7 +303,7 @@ const Wallet = () => {
 
                       <motion.button
                         disabled={true}
-                        className="bg-green-500  w-full rounded-full text-white font-semibold py-2.5 px-4  mt-6"
+                        className="bg-[#54B7F9]  w-full rounded-full text-white font-semibold py-2.5 px-4  mt-6"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
@@ -332,7 +331,7 @@ const Wallet = () => {
 
                       <motion.button
                         disabled={true}
-                        className="bg-green-500  w-full rounded-full text-white font-semibold py-2.5 px-4  mt-6"
+                        className="bg-[#54B7F9]  w-full rounded-full text-white font-semibold py-2.5 px-4  mt-6"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
