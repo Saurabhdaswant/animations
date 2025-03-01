@@ -10,7 +10,13 @@ import React from "react";
 import { ChevronLeft, HelpCircle } from "react-feather";
 
 const Wallet = () => {
-  const [screen, setScreen] = React.useState<"first" | "second" | "third">(
+  const [currentStep, setCurrentStep] = React.useState<
+    "first" | "second" | "third"
+  >("first");
+  const [nextStep, setNextStep] = React.useState<"first" | "second" | "third">(
+    "first"
+  );
+  const [prevStep, setPrevStep] = React.useState<"first" | "second" | "third">(
     "first"
   );
 
@@ -41,7 +47,11 @@ const Wallet = () => {
         background: "#F4F4F6",
       }}
       key={index}
-      onClick={() => setScreen("second")}
+      onClick={() => setCurrentStep("second")}
+      onMouseOver={() => {
+        setNextStep("second");
+        setPrevStep("first");
+      }}
       className="bg-[#FBFBFD] cursor-pointer flex items-center justify-between border border-[#F7F7F7] gap-3.5 rounded-[20px] p-4"
     >
       <div className="flex items-start gap-3">
@@ -69,32 +79,49 @@ const Wallet = () => {
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col  h-full justify-end">
               <div className="flex absolute  z-10 top-12 w-full px-4 justify-between items-center mb-4">
-                <button
+                <motion.button
+                  key={currentStep}
                   className="cursor-pointer text-[#A6A6A6] disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={() => {
-                    setScreen(
-                      screen === "second"
+                  onMouseOver={() => {
+                    setNextStep(
+                      currentStep === "second"
                         ? "first"
-                        : screen === "third"
+                        : currentStep === "third"
+                        ? "second"
+                        : ("" as any)
+                    );
+
+                    setPrevStep(
+                      currentStep === "second"
+                        ? "third"
+                        : currentStep === "third"
                         ? "second"
                         : ("" as any)
                     );
                   }}
-                  disabled={screen === "first"}
+                  onClick={() => {
+                    setCurrentStep(
+                      currentStep === "second"
+                        ? "first"
+                        : currentStep === "third"
+                        ? "second"
+                        : ("" as any)
+                    );
+                  }}
+                  disabled={currentStep === "first"}
                 >
                   <ChevronLeft className="w-6 h-6" />
-                </button>
+                </motion.button>
                 <button className="text-[#A6A6A6] cursor-pointer ">
                   <HelpCircle className="w-5 h-5" />
                 </button>
               </div>
               <AnimatePresence mode="sync">
-                {screen === "first" && (
+                {currentStep === "first" && (
                   <>
                     <motion.div
                       transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
                       layoutId="green-card"
-                      onClick={() => setScreen("second")}
                       style={{ borderRadius: "20px", background: "#54B7F9" }}
                       className="bg-green-60 cursor-pointer p-4 text-white w-[75%] mb-40 rounded-b-none mx-auto h-40"
                     />
@@ -121,7 +148,7 @@ const Wallet = () => {
                           Add an Existing Wallet
                         </motion.h2>
                         <p className="text-[#A6A6A6] mt-1.5 text-center">
-                          Choose how you’d like to import an existing wallet
+                          Choose how you'd like to import an existing wallet
                           into Family.
                         </p>
                       </motion.div>
@@ -133,70 +160,82 @@ const Wallet = () => {
                 )}
               </AnimatePresence>
               <div className="mt-36 px-4 ">
-                {(screen === "second" || screen === "third") && (
-                  <div className="p-8">
-                    <AnimatePresence mode="sync">
-                      {screen === "second" && (
-                        <motion.div
-                          key="second1"
-                          className=" absolute top-[108px]"
-                        >
-                          <motion.h2
-                            initial={{ opacity: 0, y: 10, x: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: -100 }}
-                            transition={{ duration: 0.3 }}
-                            className="  text-[#1E1E1E] font-semibold text-xl"
-                          >
-                            Import Wallet
-                          </motion.h2>
-                          <motion.p
-                            initial={{ opacity: 0, y: 10, x: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: -100 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-[#A6A6A6] mt-1.5"
-                          >
-                            Enter your Secret Recovery Phrase to import your
-                            wallet securely.
-                          </motion.p>
-                        </motion.div>
-                      )}
-                      {screen === "third" && (
-                        <motion.div
-                          key="second2"
-                          className=" absolute top-16 w-full "
-                        >
-                          <motion.h2
-                            initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: 100 }}
-                            transition={{
-                              duration: 0.3,
-                            }}
-                            className="mt-11 text-[#1E1E1E] font-semibold text-xl"
-                          >
-                            Enter Your Phrase
-                          </motion.h2>
-                          <motion.p
-                            initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 0, x: 100 }}
-                            transition={{
-                              duration: 0.3,
-                            }}
-                            className="text-[#A6A6A6] mt-2 max-w-[80%] leading-5"
-                          >
-                            Enter your Secret Recovery Phrase in its exact order
-                            , from 1 - 12{" "}
-                          </motion.p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                )}
+                <AnimatePresence mode="sync">
+                  {currentStep === "second" && (
+                    <motion.div
+                      key="second1"
+                      className="p-8 absolute top-[108px]"
+                    >
+                      <motion.h2
+                        initial={
+                          prevStep === "first" || nextStep === "first"
+                            ? { opacity: 0, y: 10, x: 0, scale: 0.9 }
+                            : { opacity: 0, y: 0, x: -100 }
+                        }
+                        animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                        exit={
+                          prevStep === "first" || nextStep === "first"
+                            ? { opacity: 0, y: 10, x: 0, scale: 0.9 }
+                            : { opacity: 0, y: 0, x: -100 }
+                        }
+                        transition={{ duration: 0.3 }}
+                        className="  text-[#1E1E1E] font-semibold text-xl"
+                      >
+                        Import Wallet
+                      </motion.h2>
+                      <motion.p
+                        initial={
+                          prevStep === "first" || nextStep === "first"
+                            ? { opacity: 0, y: 10, x: 0, scale: 0.9 }
+                            : { opacity: 0, y: 0, x: -100 }
+                        }
+                        animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                        exit={
+                          prevStep === "first" || nextStep === "first"
+                            ? { opacity: 0, y: 10, x: 0, scale: 0.9 }
+                            : { opacity: 0, y: 0, x: -100 }
+                        }
+                        transition={{ duration: 0.3 }}
+                        className="text-[#A6A6A6] mt-1.5"
+                      >
+                        Enter your Secret Recovery Phrase to import your wallet
+                        securely.
+                      </motion.p>
+                    </motion.div>
+                  )}
+                  {currentStep === "third" && (
+                    <motion.div
+                      key="second2"
+                      className="p-8 absolute top-16 w-full "
+                    >
+                      <motion.h2
+                        initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 0, x: 100 }}
+                        transition={{
+                          duration: 0.3,
+                        }}
+                        className="mt-11 text-[#1E1E1E] font-semibold text-xl"
+                      >
+                        Enter Your Phrase
+                      </motion.h2>
+                      <motion.p
+                        initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, x: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 0, x: 100 }}
+                        transition={{
+                          duration: 0.3,
+                        }}
+                        className="text-[#A6A6A6] mt-2 max-w-[80%] leading-5"
+                      >
+                        Enter your Secret Recovery Phrase in its exact order ,
+                        from 1 - 12{" "}
+                      </motion.p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-                {screen === "third" && (
+                {currentStep === "third" && (
                   <div className="absolute pr-5  flex items-center  justify-center w-full  top-4">
                     <motion.div
                       layoutId="green-card"
@@ -217,10 +256,10 @@ const Wallet = () => {
                   </div>
                 )}
 
-                {(screen === "second" || screen === "third") && (
+                {(currentStep === "second" || currentStep === "third") && (
                   <>
                     <div className="h-[12rem] relative">
-                      {screen === "second" && (
+                      {currentStep === "second" && (
                         <div className=" absolute -top-32 w-full">
                           <motion.div
                             layoutId="green-card"
@@ -228,7 +267,6 @@ const Wallet = () => {
                               duration: 0.4,
                               ease: [0.25, 1, 0.5, 1],
                             }}
-                            onClick={() => setScreen("first")}
                             className="bg-green-60  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
                             style={{
                               borderRadius: "20px",
@@ -242,7 +280,11 @@ const Wallet = () => {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 0 }}
                             transition={{ duration: 0.3 }}
-                            onClick={() => setScreen("third")}
+                            onClick={() => setCurrentStep("third")}
+                            onMouseOver={() => {
+                              setNextStep("third");
+                              setPrevStep("second");
+                            }}
                           >
                             <div className="flex-1 border-b border-gray-100/80" />
                             <button className="inline-flex items-center gap-2 text-[13px] font-medium text-[#A6A6A6]">
@@ -253,7 +295,7 @@ const Wallet = () => {
                           </motion.div>
                         </div>
                       )}
-                      {screen === "third" && (
+                      {currentStep === "third" && (
                         <div className="absolute -top-40 px-4 w-full">
                           {[...Array(1)].map((_, index) => (
                             <motion.div
@@ -277,12 +319,12 @@ const Wallet = () => {
               <div className=" ">
                 <div
                   className={` min-w-96  relative mt-10 opacity-50 mb-5 p-4 pt-5 ${
-                    screen === "third"
+                    currentStep === "third"
                       ? ""
                       : "border-t-2 border-dashed border-gray-200"
                   } mx-auto w-[70%] rounded-3xl`}
                 >
-                  {screen === "second" ? (
+                  {currentStep === "second" ? (
                     <>
                       <ShieldCheckIcon
                         color="#A6A6A6"
@@ -311,7 +353,7 @@ const Wallet = () => {
                         Import
                       </motion.button>
                     </>
-                  ) : screen === "first" ? (
+                  ) : currentStep === "first" ? (
                     <p className="text-transparent text-xs text-center">
                       nonses importing proc importing procimporting
                       procimporting proc
