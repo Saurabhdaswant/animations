@@ -31,12 +31,12 @@ export default function Home() {
           crafted while learning Framer Motion!{" "}
         </p>
         <div className="mt-10 w-full">
-          <FamilyButton />
+          {/* <FamilyButton />
           <CalendarWidget />
           <TagsContainer />
           <Timer />
           <Transactions />
-          <Screenshots />
+          <Screenshots /> */}
           <Wallet />
         </div>
       </main>

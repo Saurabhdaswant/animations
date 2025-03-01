@@ -68,27 +68,27 @@ const Wallet = () => {
         <div className="flex relative items-center h-[750px] justify-center gap-4 w-96 bg-white border border-slate-100 rounded-3xl shadow-lg overflow-hidden space-y-4">
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col  h-full justify-end">
-              <AnimatePresence mode="wait">
-                <div className="flex absolute  z-10 top-12 w-full px-4 justify-between items-center mb-4">
-                  <button
-                    className="cursor-pointer text-[#A6A6A6] disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={() => {
-                      setScreen(
-                        screen === "second"
-                          ? "first"
-                          : screen === "third"
-                          ? "second"
-                          : ("" as any)
-                      );
-                    }}
-                    disabled={screen === "first"}
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button className="text-[#A6A6A6] cursor-pointer ">
-                    <HelpCircle className="w-5 h-5" />
-                  </button>
-                </div>
+              <div className="flex absolute  z-10 top-12 w-full px-4 justify-between items-center mb-4">
+                <button
+                  className="cursor-pointer text-[#A6A6A6] disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => {
+                    setScreen(
+                      screen === "second"
+                        ? "first"
+                        : screen === "third"
+                        ? "second"
+                        : ("" as any)
+                    );
+                  }}
+                  disabled={screen === "first"}
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button className="text-[#A6A6A6] cursor-pointer ">
+                  <HelpCircle className="w-5 h-5" />
+                </button>
+              </div>
+              <AnimatePresence mode="sync">
                 {screen === "first" && (
                   <>
                     <motion.div
@@ -103,11 +103,18 @@ const Wallet = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 20, color: "transparent" }}
-                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                      transition={{
+                        duration: 0.4,
+                        ease: [0.25, 1, 0.5, 1],
+                      }}
                       className="p-8 pt-0 absolute z-50 border-t border-[#E4E4E4] bg-white h-[500px] shadow-[0_-10px_130.4px_10px_rgba(0,0,0,0.1)]"
                     >
                       <motion.div
-                        exit={{ opacity: 0, y: 30 }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.25, 1, 0.5, 1],
+                        }}
+                        exit={{ opacity: 0, y: 20 }}
                         className="flex flex-col my-9 items-center"
                       >
                         <motion.h2 className="text-[#1E1E1E] font-semibold text-xl">
@@ -194,8 +201,7 @@ const Wallet = () => {
                     <motion.div
                       layoutId="green-card"
                       transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-                      onClick={() => setScreen("first")}
-                      className=" cursor-pointer mt-8   text-white w-8 mx-auto  h-5 flex items-center justify-center"
+                      className="  mt-8   text-white w-8 mx-auto  h-5 flex items-center justify-center"
                       style={{
                         borderRadius: "4px",
                         background: "#E0F6E6",
@@ -260,10 +266,7 @@ const Wallet = () => {
                                 duration: 0.3,
                               }}
                             >
-                              <motion.div
-                                onClick={() => setScreen("second")}
-                                className="bg-gray-100 rounded-xl border-gray-200 border border-dotted h-14 cursor-pointer text-white w-full mx-auto"
-                              />
+                              <motion.div className="bg-gray-100 rounded-xl border-gray-200 border border-dotted h-14 cursor-pointer text-white w-full mx-auto" />
                             </motion.div>
                           ))}
                         </div>
