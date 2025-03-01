@@ -46,4 +46,3 @@
 // --- one circle and one line
 // --- one circle with arrow icon on top right outside
 // second card decoration
-// - back and question button on all screens

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   CreditCardIcon,
   LockClosedIcon,
@@ -7,6 +6,8 @@ import {
 } from "@heroicons/react/16/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { EllipsisVertical } from "lucide-react";
+import React from "react";
+import { ChevronLeft, HelpCircle } from "react-feather";
 
 const Wallet = () => {
   const [screen, setScreen] = React.useState<"first" | "second" | "third">(
@@ -68,6 +69,26 @@ const Wallet = () => {
           <div className="h-full flex flex-col justify-between">
             <div className="flex flex-col  h-full justify-end">
               <AnimatePresence mode="wait">
+                <div className="flex absolute z-10 top-10 w-full px-4 justify-between items-center mb-4">
+                  <button
+                    className="cursor-pointer text-[#A6A6A6] disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={() => {
+                      setScreen(
+                        screen === "second"
+                          ? "first"
+                          : screen === "third"
+                          ? "second"
+                          : ("" as any)
+                      );
+                    }}
+                    disabled={screen === "first"}
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button className="text-[#A6A6A6] cursor-pointer ">
+                    <HelpCircle className="w-5 h-5" />
+                  </button>
+                </div>
                 {screen === "first" && (
                   <>
                     <motion.div
