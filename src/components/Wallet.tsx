@@ -116,6 +116,27 @@ const Wallet = () => {
                   <HelpCircle className="w-5 h-5" />
                 </button>
               </div>
+              <div className="absolute top-4 border w-full h-4 ">.</div>
+              {currentStep === "third" && (
+                <div className="absolute pr-5 border flex items-center  justify-center w-full  top-4">
+                  <motion.div
+                    layoutId="green-card"
+                    transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                    className="  mt-8   text-white w-8 mx-auto bg-opacity-30 bg-[#54B7F9]  h-5 flex items-center justify-center"
+                    style={{
+                      borderRadius: "4px",
+                    }}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.08 }}
+                    >
+                      <LockClosedIcon className="w-3 h-3 text-[#54B7F9]" />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              )}
               <AnimatePresence mode="sync">
                 {currentStep === "first" && (
                   <>
@@ -206,7 +227,7 @@ const Wallet = () => {
                   {currentStep === "third" && (
                     <motion.div
                       key="second2"
-                      className="p-8 absolute top-16 w-full "
+                      className="p-3 absolute top-16 w-full "
                     >
                       <motion.h2
                         initial={{ opacity: 0, y: 0, x: 100, scale: 0.9 }}
@@ -235,27 +256,6 @@ const Wallet = () => {
                   )}
                 </AnimatePresence>
 
-                {currentStep === "third" && (
-                  <div className="absolute pr-5  flex items-center  justify-center w-full  top-4">
-                    <motion.div
-                      layoutId="green-card"
-                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-                      className="  mt-8   text-white w-8 mx-auto bg-opacity-30 bg-[#54B7F9]  h-5 flex items-center justify-center"
-                      style={{
-                        borderRadius: "4px",
-                      }}
-                    >
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.08 }}
-                      >
-                        <LockClosedIcon className="w-3 h-3 text-[#54B7F9]" />
-                      </motion.div>
-                    </motion.div>
-                  </div>
-                )}
-
                 {(currentStep === "second" || currentStep === "third") && (
                   <>
                     <div className="h-[12rem] relative">
@@ -267,7 +267,7 @@ const Wallet = () => {
                               duration: 0.4,
                               ease: [0.25, 1, 0.5, 1],
                             }}
-                            className="bg-green-60  cursor-pointer mt-8 p-4 text-white w-[90%] mx-auto h-[12rem]"
+                            className="bg-green-60  cursor-pointer mt-14 p-4 text-white w-[95%] mx-auto h-[12rem]"
                             style={{
                               borderRadius: "20px",
                               background: "#54B7F9",
@@ -296,7 +296,7 @@ const Wallet = () => {
                         </div>
                       )}
                       {currentStep === "third" && (
-                        <div className="absolute -top-40 px-4 w-full">
+                        <div className="absolute -top-40 px-2 w-full">
                           {[...Array(1)].map((_, index) => (
                             <motion.div
                               className="bg-white rounded-[18px] w-full mt-8 shadow-2xl p-1.5"
@@ -318,7 +318,7 @@ const Wallet = () => {
               </div>
               <div className=" ">
                 <div
-                  className={` min-w-96  relative mt-10 opacity-50 mb-5 p-4 pt-5 ${
+                  className={` min-w-[340px]  relative mt-10 opacity-50 mb-5 p-4 pt-5 ${
                     currentStep === "third"
                       ? ""
                       : "border-t-2 border-dashed border-gray-200"
