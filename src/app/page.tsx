@@ -32,9 +32,9 @@ export default function Home() {
           crafted while learning Framer Motion!{" "}
         </p>
         <div className="mt-10 w-full">
-          {/* <WalletStepProvider>
+          <WalletStepProvider>
             <Wallet />
-          </WalletStepProvider> */}
+          </WalletStepProvider>
           <FamilyButton />
           <Transactions />
           <CalendarWidget />

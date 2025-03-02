@@ -15,8 +15,12 @@ export default function FirstStep() {
             transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
             layoutId="blue-card"
             style={{ borderRadius: "20px", background: "#54B7F9" }}
-            className="bg-green-60 cursor-pointer p-4 text-white w-[75%] mb-40 rounded-b-none mx-auto h-40"
-          />
+            className="bg-green-60 flex items-start justify-between cursor-pointer p-4 text-white w-[75%] mb-40 rounded-b-none mx-auto h-40"
+          >
+            <div className="size-12 rounded-full bg-white/30" />
+            <div className="w-32 h-6 rounded-full bg-white/30" />
+          </motion.div>
+
           <motion.div
             layout
             initial={{ opacity: 0, y: 20 }}
