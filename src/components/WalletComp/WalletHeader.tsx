@@ -7,7 +7,7 @@ export default function WalletHeader() {
     useWalletStep();
 
   return (
-    <div className="flex absolute  z-10 top-12 w-full px-4 justify-between items-center mb-4">
+    <div className="flex absolute right-0  pr-5  z-10 top-12 w-full px-4 justify-between items-center mb-4">
       <motion.button
         key={currentStep}
         className="cursor-pointer text-[#A6A6A6] disabled:opacity-50 disabled:cursor-not-allowed"
