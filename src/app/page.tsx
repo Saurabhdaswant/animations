@@ -9,6 +9,7 @@ import Screenshots from "@/components/Screenshots";
 import Wallet from "@/components/Wallet";
 import Wallet2 from "@/components/Wallet2";
 import WalletM from "@/components/WalletM";
+import { WalletStepProvider } from "@/providers/WalletStepProvider";
 
 export default function Home() {
   return (
@@ -31,7 +32,9 @@ export default function Home() {
           crafted while learning Framer Motion!{" "}
         </p>
         <div className="mt-10 w-full">
-          {/* <Wallet /> */}
+          <WalletStepProvider>
+            <Wallet />
+          </WalletStepProvider>
           <FamilyButton />
           <Transactions />
           <CalendarWidget />

@@ -1,12 +1,11 @@
+import { useWalletStep } from "@/providers/WalletStepProvider";
 import { motion } from "framer-motion";
 import { ChevronLeft, HelpCircle } from "react-feather";
 
-export default function WalletHeader({
-  currentStep,
-  setCurrentStep,
-  setNextStep,
-  setPrevStep,
-}: any) {
+export default function WalletHeader() {
+  const { currentStep, setCurrentStep, setNextStep, setPrevStep } =
+    useWalletStep();
+
   return (
     <div className="flex absolute  z-10 top-12 w-full px-4 justify-between items-center mb-4">
       <motion.button

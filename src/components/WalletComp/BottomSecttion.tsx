@@ -1,13 +1,11 @@
 import React from "react";
 import { ShieldCheckIcon } from "@heroicons/react/16/solid";
 import { motion } from "framer-motion";
-import { WalletStep } from "@/utils/constants";
+import { useWalletStep } from "@/providers/WalletStepProvider";
 
-interface BottomSectionProps {
-  currentStep: WalletStep;
-}
+export default function BottomSection() {
+  const { currentStep } = useWalletStep();
 
-export default function BottomSection({ currentStep }: BottomSectionProps) {
   return (
     <div className=" ">
       <div

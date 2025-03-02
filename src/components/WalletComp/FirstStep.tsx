@@ -2,21 +2,11 @@ import { cardData } from "@/utils/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import CardItem from "./CardItem";
 import React from "react";
-import { WalletStep } from "@/utils/constants";
+import { useWalletStep } from "@/providers/WalletStepProvider";
 
-interface FirstStepProps {
-  currentStep: WalletStep;
-  setCurrentStep: React.Dispatch<React.SetStateAction<WalletStep>>;
-  setNextStep: React.Dispatch<React.SetStateAction<WalletStep>>;
-  setPrevStep: React.Dispatch<React.SetStateAction<WalletStep>>;
-}
+export default function FirstStep() {
+  const { currentStep } = useWalletStep();
 
-export default function FirstStep({
-  currentStep,
-  setCurrentStep,
-  setNextStep,
-  setPrevStep,
-}: FirstStepProps) {
   return (
     <AnimatePresence mode="sync">
       {currentStep === "first" && (
@@ -56,15 +46,7 @@ export default function FirstStep({
             {/* Card items for first step */}
             <div className="flex flex-col gap-4">
               {cardData.map((card, idx) => {
-                return (
-                  <CardItem
-                    Key={idx}
-                    setCurrentStep={setCurrentStep}
-                    setNextStep={setNextStep}
-                    setPrevStep={setPrevStep}
-                    card={card}
-                  />
-                );
+                return <CardItem Key={idx} card={card} />;
               })}
             </div>
           </motion.div>

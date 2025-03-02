@@ -1,13 +1,11 @@
+import { useWalletStep } from "@/providers/WalletStepProvider";
 import { CreditCardIcon } from "@heroicons/react/16/solid";
 import { motion } from "framer-motion";
 import { EllipsisVertical } from "lucide-react";
 
-export default function CardItem({
-  setCurrentStep,
-  setNextStep,
-  setPrevStep,
-  card,
-}: any) {
+export default function CardItem({ card }: any) {
+  const { setCurrentStep, setNextStep, setPrevStep } = useWalletStep();
+
   return (
     <motion.div
       layout

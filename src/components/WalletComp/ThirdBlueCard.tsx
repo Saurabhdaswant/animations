@@ -1,8 +1,11 @@
 import React from "react";
 import { LockClosedIcon } from "@heroicons/react/16/solid";
 import { motion } from "framer-motion";
+import { useWalletStep } from "@/providers/WalletStepProvider";
 
-export default function ThirdBlueCard({ currentStep }: any) {
+export default function ThirdBlueCard() {
+  const { currentStep } = useWalletStep();
+
   return (
     <>
       {currentStep === "third" && (
