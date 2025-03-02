@@ -3,12 +3,10 @@
 import TagsContainer from "@/components/Bookmark";
 import CalendarWidget from "@/components/CalendarWidget";
 import FamilyButton from "@/components/FamilyButton";
-import Transactions from "@/components/Transactions";
-import Timer from "@/components/Timer";
 import Screenshots from "@/components/Screenshots";
+import Timer from "@/components/Timer";
+import Transactions from "@/components/Transactions";
 import Wallet from "@/components/Wallet";
-import Wallet2 from "@/components/Wallet2";
-import WalletM from "@/components/WalletM";
 import { WalletStepProvider } from "@/providers/WalletStepProvider";
 
 export default function Home() {
@@ -31,7 +29,7 @@ export default function Home() {
           </a>{" "}
           crafted while learning Framer Motion!{" "}
         </p>
-        <div className="mt-10 w-full">
+        <div className="hidden md:block mt-10 w-full">
           <WalletStepProvider>
             <Wallet />
           </WalletStepProvider>
@@ -41,6 +39,13 @@ export default function Home() {
           <Timer />
           <Screenshots />
           <TagsContainer />
+        </div>
+        <div className="md:hidden mt-10 w-full">
+          <p className="text-center text-gray-500">
+            This animation experience is best viewed on a larger screen. Please
+            visit this site on a laptop or desktop computer for the full
+            experience.
+          </p>
         </div>
       </main>
     </div>
