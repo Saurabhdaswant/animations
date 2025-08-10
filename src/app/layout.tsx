@@ -27,7 +27,7 @@ const openRundeBold = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Crafts",
+  title: "Crafts | Animations",
   description: "Animations",
 };
 
