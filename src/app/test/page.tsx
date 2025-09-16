@@ -53,10 +53,30 @@ function Card({ id, color, index, clickedId, setClickedId, isClicked, setIsClick
         setClickedId(id);
         setIsClicked(true);
       }}
+      animate={{ rotate: [0 , 5, -5], y: [0, -10, 0]  }}
+      transition={{
+        type: "spring",
+        ease : "easeOut",
+        bounce: 0.15,
+        duration: 0.7,
 
+
+        rotate: {
+          duration: 6,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "mirror",
+        },
+         y: {
+          duration: 3,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "mirror",
+        },
+      }}
       layoutId={id}
       style={{
-        borderRadius: 16,
+        borderRadius: 30,
       }}
       className={`h-[22rem] cursor-pointer w-[22rem] absolute  top-[calc(50%-176px)] text-center ${colorClasses[color]} ${clickedId === id ? offsets[clickedId as string][index] : isClicked ? `opacity-35 ${offsets[clickedId as string][index]}` : offsets["initial"][index]}`}
     >
@@ -69,8 +89,22 @@ function Card({ id, color, index, clickedId, setClickedId, isClicked, setIsClick
         setIsClicked(true);
       }}
       layoutId={id}
-       style={{
-        borderRadius: 16,
+      style={{
+        borderRadius: 26,
+      }}
+      animate={{ y: [0, -10, 0], rotate:0 }}
+      transition={{
+        type: "spring",
+        ease : "easeOut",
+        duration: 0.7,
+        bounce: 0.15,
+
+          y: {
+          duration: 3,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "mirror",
+        },
       }}
       className={` cursor-pointer min-h-44 w-44 absolute  top-[calc(50%-88px)] text-center ${colorClasses[color]} ${clickedId === id ? offsets[clickedId as string][index] : isClicked ? `opacity-35 ${offsets[clickedId as string][index]}` : offsets["initial"][index]}`}
     >
@@ -93,7 +127,7 @@ export default function Page() {
     <>
       <div className={` h-screen overflow-hidden relative  `}>
         {layoutIds.map(({ id, color }, index) => (
-          <Card
+              <Card
             key={id}
             id={id}
             color={color}
