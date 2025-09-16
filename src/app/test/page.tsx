@@ -26,22 +26,10 @@ function Card({ id, color, index, clickedId, setClickedId, isClicked, setIsClick
 
   const offsets: Record<string, string[]> = {
     initial: ["left-[30rem]", "left-[42rem]", "left-[54rem]", "left-[66rem]"],
-    purple: ["left-[30rem]", "left-[60rem]", "left-[84rem]", "left-[106rem]"],
-    orange: ["left-[0rem]", "left-[30rem]", "left-[64rem]", "left-[86rem]"],
-    blue: ["left-[-30rem]", "left-[0rem]", "left-[30rem]", "left-[66rem]"],
-    green: ["left-[-60rem]", "left-[-30rem]", "left-[0rem]", "left-[30rem]"],
-  };
-
-
-  const cardVariants = {
-    static: {
-      scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-    clicked: {
-      scale: 2,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
+    purple: ["left-[26rem]", "left-[60rem]", "left-[84rem]", "left-[106rem]"],
+    orange: ["left-[0rem]", "left-[26rem]", "left-[64rem]", "left-[86rem]"],
+    blue: ["left-[-30rem]", "left-[0rem]", "left-[26rem]", "left-[66rem]"],
+    green: ["left-[-60rem]", "left-[-30rem]", "left-[0rem]", "left-[26rem]"],
   };
 
   React.useEffect(() => {
@@ -58,19 +46,33 @@ function Card({ id, color, index, clickedId, setClickedId, isClicked, setIsClick
     };
   }, [setClickedId]);
 
-  return (
+  if(clickedId === id ){
+    return  <motion.div
+      ref={ref}
+      onClick={() => {
+        setClickedId(id);
+        setIsClicked(true);
+      }}
+
+      layoutId={id}
+      style={{
+        borderRadius: 16,
+      }}
+      className={`h-[22rem] cursor-pointer w-[22rem] absolute  top-[calc(50%-176px)] text-center ${colorClasses[color]} ${clickedId === id ? offsets[clickedId as string][index] : isClicked ? `opacity-35 ${offsets[clickedId as string][index]}` : offsets["initial"][index]}`}
+    >
+    </motion.div>
+  }else return (
     <motion.div
       ref={ref}
       onClick={() => {
         setClickedId(id);
         setIsClicked(true);
       }}
-      layout
-      custom={index}
-      variants={cardVariants}
-      initial="static"
-      animate={isClicked && clickedId === id ? "clicked" : "static"}
-      className={` rounded-2xl min-h-44 w-44 absolute  top-[calc(50%-88px)] text-center ${colorClasses[color]} ${clickedId === id ? offsets[clickedId as string][index] : isClicked ? `opacity-35 ${offsets[clickedId as string][index]}` : offsets["initial"][index]}`}
+      layoutId={id}
+       style={{
+        borderRadius: 16,
+      }}
+      className={` cursor-pointer min-h-44 w-44 absolute  top-[calc(50%-88px)] text-center ${colorClasses[color]} ${clickedId === id ? offsets[clickedId as string][index] : isClicked ? `opacity-35 ${offsets[clickedId as string][index]}` : offsets["initial"][index]}`}
     >
     </motion.div>
   );
